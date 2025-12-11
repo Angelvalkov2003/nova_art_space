@@ -2,25 +2,37 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #495464;
+  --accent-light: #e8e8e8;
+  --accent-medium: #bbbfca;
+  --accent-dark: #495464;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-accent-light: var(--accent-light);
+  --color-accent-medium: var(--accent-medium);
+  --color-accent-dark: var(--accent-dark);
+  --font-sans: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Button alignment change */
+a.btn {
+  align-items: flex-end;
+}
+
+/* Video font weight change */
+media-controller video {
+  font-weight: 600;
 }

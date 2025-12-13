@@ -4,12 +4,34 @@ import { IconCalendar, IconLocation, IconParty } from "../components/Icons";
 import { getExhibitions, Exhibition } from "../lib/exhibitions";
 import Image from "next/image";
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Izlozhbi() {
   const exhibitions = await getExhibitions();
+
+  // Debug: Log exhibitions to see what we're getting
+  console.log("Total exhibitions fetched:", exhibitions.length);
+  console.log(
+    "Exhibitions:",
+    exhibitions.map((ex) => ({
+      title: ex.title,
+      position: ex.position,
+      slug: ex.slug,
+    }))
+  );
 
   // Separate current (position 0) and past exhibitions
   const currentExhibition = exhibitions.find((ex) => ex.position === 0);
   const pastExhibitions = exhibitions.filter((ex) => ex.position !== 0);
+
+  console.log("Current exhibition:", currentExhibition?.title);
+  console.log("Past exhibitions count:", pastExhibitions.length);
+  console.log(
+    "Past exhibitions:",
+    pastExhibitions.map((ex) => ({ title: ex.title, position: ex.position }))
+  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -115,12 +137,10 @@ export default async function Izlozhbi() {
                   } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer`}
                 >
                   <div className="mb-4">
-                    {/* Subtitle */}
-                    {exhibition.subtitle && (
-                      <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-4 group-hover:text-[#3a4149] transition-colors">
-                        {exhibition.subtitle}
-                      </h3>
-                    )}
+                    {/* Title/Subtitle - показва subtitle ако има, иначе title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-4 group-hover:text-[#3a4149] transition-colors">
+                      {exhibition.subtitle || exhibition.title}
+                    </h3>
 
                     {/* Main Image */}
                     {exhibition.mainImage && (

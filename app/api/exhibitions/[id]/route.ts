@@ -41,8 +41,16 @@ export async function PUT(
       );
     }
 
-    if (slug !== undefined) updateData.slug = slug;
-    else if (title) updateData.slug = generateSlug(title);
+    if (slug !== undefined && slug.trim() !== '') {
+      updateData.slug = slug;
+    } else if (title) {
+      let generatedSlug = generateSlug(title);
+      // Ensure slug is not empty
+      if (!generatedSlug || generatedSlug.trim() === '') {
+        generatedSlug = generateSlug(title); // Will generate auto slug
+      }
+      updateData.slug = generatedSlug;
+    }
 
     const { data: exhibition, error: exhibitionError } = await supabaseAdmin
       .from('exhibitions')

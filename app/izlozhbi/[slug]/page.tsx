@@ -5,6 +5,10 @@ import { getExhibitionBySlug } from "../../lib/exhibitions";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }

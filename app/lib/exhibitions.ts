@@ -14,17 +14,37 @@ export interface Exhibition {
 
 // Generate slug from title (useful for creating new exhibitions)
 export function generateSlug(title: string): string {
-  return title
+  if (!title || title.trim() === '') {
+    return generateAutoSlug();
+  }
+
+  let slug = title
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
     .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
     .replace(/^-+|-+$/g, ''); // Remove leading/trailing hyphens
+
+  // If slug is empty or only contains hyphens (e.g., from Cyrillic text),
+  // generate automatic slug with number
+  if (!slug || slug.trim() === '' || slug === '-') {
+    return generateAutoSlug();
+  }
+
+  return slug;
+}
+
+// Generate automatic slug like "izlojba111", "izlojba112", etc.
+function generateAutoSlug(): string {
+  // Use timestamp to ensure uniqueness
+  const timestamp = Date.now();
+  const randomNum = Math.floor(Math.random() * 1000);
+  return `izlojba${timestamp}${randomNum}`;
 }
 
 export async function getExhibitions(): Promise<Exhibition[]> {
   try {
-    // Fetch exhibitions from Supabase
+    // Fetch exhibitions from Supabase (always fresh, no cache)
     const { data: exhibitionsData, error: exhibitionsError } = await supabase
       .from('exhibitions')
       .select('*')

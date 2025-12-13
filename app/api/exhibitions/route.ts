@@ -54,7 +54,43 @@ export async function POST(request: NextRequest) {
     }
 
     // Generate slug if not provided
-    const slug = body.slug || generateSlug(title);
+    let slug = body.slug || generateSlug(title);
+    
+    // Ensure slug is not empty
+    if (!slug || slug.trim() === '') {
+      slug = generateSlug(title); // Will generate auto slug if title doesn't work
+    }
+    
+    // Check if slug already exists and make it unique if needed
+    if (slug) {
+      const { data: existing } = await supabaseAdmin
+        .from('exhibitions')
+        .select('id')
+        .eq('slug', slug)
+        .limit(1);
+      
+      if (existing && existing.length > 0) {
+        // Slug exists, append number
+        let counter = 1;
+        let uniqueSlug = `${slug}-${counter}`;
+        let checkResult = await supabaseAdmin
+          .from('exhibitions')
+          .select('id')
+          .eq('slug', uniqueSlug)
+          .limit(1);
+        
+        while (checkResult.data && checkResult.data.length > 0) {
+          counter++;
+          uniqueSlug = `${slug}-${counter}`;
+          checkResult = await supabaseAdmin
+            .from('exhibitions')
+            .select('id')
+            .eq('slug', uniqueSlug)
+            .limit(1);
+        }
+        slug = uniqueSlug;
+      }
+    }
 
     // Insert exhibition using admin client (bypasses RLS)
     const { data: exhibition, error: exhibitionError } = await supabaseAdmin

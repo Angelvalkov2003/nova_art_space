@@ -11,27 +11,9 @@ export const revalidate = 0;
 export default async function Izlozhbi() {
   const exhibitions = await getExhibitions();
 
-  // Debug: Log exhibitions to see what we're getting
-  console.log("Total exhibitions fetched:", exhibitions.length);
-  console.log(
-    "Exhibitions:",
-    exhibitions.map((ex) => ({
-      title: ex.title,
-      position: ex.position,
-      slug: ex.slug,
-    }))
-  );
-
   // Separate current (position 0) and past exhibitions
   const currentExhibition = exhibitions.find((ex) => ex.position === 0);
   const pastExhibitions = exhibitions.filter((ex) => ex.position !== 0);
-
-  console.log("Current exhibition:", currentExhibition?.title);
-  console.log("Past exhibitions count:", pastExhibitions.length);
-  console.log(
-    "Past exhibitions:",
-    pastExhibitions.map((ex) => ({ title: ex.title, position: ex.position }))
-  );
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,7 +54,7 @@ export default async function Izlozhbi() {
         {currentExhibition && (
           <Link
             href={`/izlozhbi/${currentExhibition.slug}`}
-            className="block mb-20 pb-16 border-b-2 border-[#E8E8E8] relative group cursor-pointer"
+            className="block mb-20 pb-16 border-b-2 border-[#E8E8E8] relative group cursor-pointer max-w-4xl"
           >
             <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
             <div className="relative z-10">
@@ -83,33 +65,43 @@ export default async function Izlozhbi() {
                 </span>
               </div>
 
+              {/* Title */}
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3 group-hover:text-[#3a4149] transition-colors">
+                {currentExhibition.title}
+              </h2>
+
               {/* Subtitle */}
               {currentExhibition.subtitle && (
-                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6 group-hover:text-[#3a4149] transition-colors">
+                <p className="text-lg text-[#495464]/70 mb-6">
                   {currentExhibition.subtitle}
-                </h2>
+                </p>
               )}
 
               {/* Main Image */}
               {currentExhibition.mainImage && (
-                <div className="mb-6 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
+                <div className="mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity w-full max-w-md">
                   <Image
                     src={currentExhibition.mainImage}
                     alt={currentExhibition.title}
-                    width={1200}
-                    height={600}
+                    width={500}
+                    height={300}
                     className="w-full h-auto object-cover"
                   />
                 </div>
               )}
 
-              {/* Date */}
-              {currentExhibition.date && (
-                <div className="flex items-center gap-2 text-[#495464]/70">
-                  <IconCalendar className="w-5 h-5 text-[#495464]" />
-                  <p className="text-lg">{currentExhibition.date}</p>
-                </div>
-              )}
+              {/* Author and Date */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md">
+                {currentExhibition.author && (
+                  <p className="text-base">Автор: {currentExhibition.author}</p>
+                )}
+                {currentExhibition.date && (
+                  <div className="flex items-center gap-2">
+                    <IconCalendar className="w-5 h-5 text-[#495464]" />
+                    <p className="text-base">{currentExhibition.date}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </Link>
         )}
@@ -134,34 +126,46 @@ export default async function Izlozhbi() {
                   href={`/izlozhbi/${exhibition.slug}`}
                   className={`block ${
                     idx < pastExhibitions.length - 1 ? "pb-12 border-b" : "pb-8"
-                  } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer`}
+                  } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer max-w-4xl`}
                 >
                   <div className="mb-4">
-                    {/* Title/Subtitle - показва subtitle ако има, иначе title */}
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-4 group-hover:text-[#3a4149] transition-colors">
-                      {exhibition.subtitle || exhibition.title}
+                    {/* Title */}
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2 group-hover:text-[#3a4149] transition-colors">
+                      {exhibition.title}
                     </h3>
+
+                    {/* Subtitle */}
+                    {exhibition.subtitle && (
+                      <p className="text-base text-[#495464]/70 mb-4">
+                        {exhibition.subtitle}
+                      </p>
+                    )}
 
                     {/* Main Image */}
                     {exhibition.mainImage && (
-                      <div className="mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
+                      <div className="mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity w-full max-w-md">
                         <Image
                           src={exhibition.mainImage}
                           alt={exhibition.title}
-                          width={1200}
-                          height={600}
+                          width={500}
+                          height={300}
                           className="w-full h-auto object-cover"
                         />
                       </div>
                     )}
 
-                    {/* Date */}
-                    {exhibition.date && (
-                      <div className="flex items-center gap-2 text-[#495464]/70">
-                        <IconCalendar className="w-5 h-5 text-[#495464]" />
-                        <p className="text-lg">{exhibition.date}</p>
-                      </div>
-                    )}
+                    {/* Author and Date */}
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md">
+                      {exhibition.author && (
+                        <p className="text-base">Автор: {exhibition.author}</p>
+                      )}
+                      {exhibition.date && (
+                        <div className="flex items-center gap-2">
+                          <IconCalendar className="w-5 h-5 text-[#495464]" />
+                          <p className="text-base">{exhibition.date}</p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </Link>
               ))}

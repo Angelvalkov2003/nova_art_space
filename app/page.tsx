@@ -374,15 +374,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">nOva art space</h3>
-              <p className="text-[#495464] text-sm leading-relaxed">
+              <h3 className="font-bold text-lg mb-4 text-white">nOva art space</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
                 Съвременна галерия и премиум пространство за събития в сърцето
                 на София.
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Бързи връзки</h3>
-              <ul className="space-y-2 text-sm text-[#495464]">
+              <h3 className="font-bold text-lg mb-4 text-white">Бързи връзки</h3>
+              <ul className="space-y-2 text-sm text-white/80">
                 <li>
                   <Link
                     href="/izlozhbi"
@@ -418,14 +418,14 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4">Свържете се</h3>
-              <ul className="space-y-2 text-sm text-[#495464]">
+              <h3 className="font-bold text-lg mb-4 text-white">Свържете се</h3>
+              <ul className="space-y-2 text-sm text-white/80">
                 <li>
                   <a
                     href="tel:0888426610"
                     className="hover:text-white transition-colors duration-300 flex items-center gap-2"
                   >
-                    <IconPhone className="w-4 h-4 text-[#495464]" /> 0888 426
+                    <IconPhone className="w-4 h-4 text-white/80" /> 0888 426
                     610
                   </a>
                 </li>
@@ -434,7 +434,7 @@ export default function Home() {
                     href="mailto:novaartspace@gmail.com"
                     className="hover:text-white transition-colors duration-300 flex items-center gap-2"
                   >
-                    <IconMail className="w-4 h-4 text-[#495464]" />{" "}
+                    <IconMail className="w-4 h-4 text-white/80" />{" "}
                     novaartspace@gmail.com
                   </a>
                 </li>
@@ -459,8 +459,8 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="border-t border-[#495464]/50 pt-8 text-center">
-            <p className="text-[#495464] text-sm">
+          <div className="border-t border-white/20 pt-8 text-center">
+            <p className="text-white/80 text-sm">
               © {new Date().getFullYear()} nOva art space. Всички права
               запазени.
             </p>

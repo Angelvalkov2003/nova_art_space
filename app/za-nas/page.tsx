@@ -293,7 +293,7 @@ export default function ZaNas() {
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-[#495464] text-sm">
+          <p className="text-white/80 text-sm">
             © {new Date().getFullYear()} nOva art space. Всички права запазени.
           </p>
         </div>

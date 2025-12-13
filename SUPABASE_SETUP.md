@@ -9,6 +9,7 @@
 5. Натисни **Run** или **Execute**
 
 Това ще създаде две таблици:
+
 - `exhibitions` - основна информация за изложбите
 - `exhibition_images` - снимките за всяка изложба (със свързване към изложбата)
 
@@ -110,7 +111,6 @@ ORDER BY ei.image_order;
 - **Структура на таблиците:**
   - `exhibitions` - съдържа основната информация за изложбата
   - `exhibition_images` - съдържа снимките, свързани с изложбата чрез `exhibition_id`
-  
 - **Slug** трябва да се генерира в приложението преди INSERT
 - **Position 0** = настояща изложба (показва се най-отгоре)
 - **Position > 0** = минали изложби (сортират се в низходящ ред)
@@ -119,6 +119,31 @@ ORDER BY ei.image_order;
 - Таблиците са настроени с публичен достъп за четене (SELECT)
 - За писане/редактиране е нужна автентикация
 - При изтриване на изложба, всички свързани снимки се изтриват автоматично (CASCADE)
+
+## Настройка на Service Role Key за админ панела
+
+За да работи админ панелът правилно, трябва да добавиш **Service Role Key** в `.env.local`:
+
+1. Отиди в Supabase Dashboard → твоя проект
+2. Отиди на **Settings** → **API**
+3. Намери **service_role** key (секретен ключ - не го споделяй публично!)
+4. Добави го в `.env.local`:
+
+```env
+SUPABASE_SERVICE_ROLE_KEY=твоят-service-role-key
+```
+
+**Важно:** Service Role Key заобикаля Row Level Security (RLS) и трябва да се използва САМО в server-side код (API routes). Никога не го използвай в client-side код!
+
+Пълният `.env.local` файл трябва да изглежда така:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=твоят-url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=твоят-publishable-key
+SUPABASE_SERVICE_ROLE_KEY=твоят-service-role-key
+ADMIN_NAME=твоето-име
+ADMIN_PASSWORD=твоята-парола
+```
 
 ## Следващи стъпки:
 

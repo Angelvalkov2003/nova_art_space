@@ -108,21 +108,13 @@ export default async function ExhibitionDetail({ params }: PageProps) {
                 <IconCalendar className="w-5 h-5 text-[#495464]" />
                 {exhibition.date.includes("Изложбата")
                   ? exhibition.date
-                  : `Изложбата ${
-                      exhibition.position === 0 ? "ще се проведе" : "се проведе"
-                    } ${exhibition.date}`}
+                  : `Датата на изложбата е ${exhibition.date}`}
               </p>
             )}
             <p className="text-base text-[#495464]/70 flex items-center gap-2">
               <IconLocation className="w-5 h-5 text-[#495464]" />
               Галерия nOva art space, ул. Съборна №3 (ниво -1)
             </p>
-            {exhibition.date && exhibition.position === 0 && (
-              <p className="text-base text-[#495464]/70 flex items-center gap-2">
-                <IconParty className="w-5 h-5 text-[#495464]" />
-                Откриването е на {exhibition.date.split(" ")[0]} от 18:00ч.
-              </p>
-            )}
           </div>
         </div>
 

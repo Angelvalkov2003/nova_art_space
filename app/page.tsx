@@ -17,83 +17,97 @@ import {
   IconNewspaper,
   IconOffice,
 } from "./components/Icons";
+import { getExhibitions } from "./lib/exhibitions";
 
-export default function Home() {
+export default async function Home() {
+  // Fetch current exhibition (position 0)
+  const exhibitions = await getExhibitions();
+  const currentExhibition = exhibitions.find((ex) => ex.position === 0);
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
       <MainSlider />
 
       {/* Настояща изложба */}
-      <section className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8E8E8] rounded-full blur-3xl opacity-30 -mr-48 -mt-48"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
-                Настояща изложба
-              </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-              „Ренесанс"
-            </h2>
-            <div className="space-y-4 mb-6">
-              <p className="text-lg text-[#495464]/80 leading-relaxed">
-                Проектът "Ренесанс" представя синтез между живопис и керамика,
-                дело на шестима утвърдени български творци - Валентин Ангелов,
-                Васил Стоев, Георги Миленов, Гергана Лалова, Евгения Георгиева и
-                Михаил Лалов.
-              </p>
-              <p className="text-lg text-[#495464]/80 leading-relaxed">
-                Обединени около идеята за художествено възраждане на керамиката,
-                авторите търсят границите на формата, цвета и живописното
-                мислене, трансформирани в триизмерната пластика на глината. В
-                изложбата виждаме как преплетеното между традицията и
-                съвременността, между класическата живопис и модерната пластика,
-                се превръща в смисъл и визуално изживяване.
-              </p>
-            </div>
-            <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
-              <p className="text-lg text-[#495464]/90 leading-relaxed mb-2 font-medium flex items-center gap-2">
-                <IconCalendar className="w-5 h-5 text-[#495464]" />
-                Изложбата ще се проведе от 24 до 30 ноември
-              </p>
-              <p className="text-base text-[#495464]/70 flex items-center gap-2">
-                <IconLocation className="w-5 h-5 text-[#495464]" />
-                Галерия nOva art space, ул. Съборна №3 (ниво -1)
-              </p>
-              <p className="text-base text-[#495464]/70 mt-2 flex items-center gap-2">
-                <IconParty className="w-5 h-5 text-[#495464]" />
-                Откриването е на 24 ноември от 18:00ч.
-              </p>
-            </div>
-            <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4">
-              Проектът се осъществява със средствата на Recovery and Resilience
-              Plan и подкрепата на Национале фонд "Култура".
-            </p>
-            <Link
-              href="/izlozhbi"
-              className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
-            >
-              Разгледай изложбата
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+      {currentExhibition && (
+        <section className="py-20 bg-white relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#E8E8E8] rounded-full blur-3xl opacity-30 -mr-48 -mt-48"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="w-12 h-0.5 bg-[#495464]"></span>
+                <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                  Настояща изложба
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-2">
+                „{currentExhibition.title}"
+              </h2>
+              {currentExhibition.subtitle && (
+                <p className="text-base md:text-lg text-[#495464]/60 mb-6 font-normal">
+                  {currentExhibition.subtitle}
+                </p>
+              )}
+
+              {/* Main Image */}
+              {currentExhibition.mainImage && (
+                <div className="mb-8 rounded-lg overflow-hidden">
+                  <Image
+                    src={currentExhibition.mainImage}
+                    alt={currentExhibition.title}
+                    width={800}
+                    height={500}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              )}
+
+              <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
+                {currentExhibition.date && (
+                  <p className="text-lg text-[#495464]/90 leading-relaxed mb-2 font-medium flex items-center gap-2">
+                    <IconCalendar className="w-5 h-5 text-[#495464]" />
+                    {currentExhibition.date.includes("Изложбата")
+                      ? currentExhibition.date
+                      : `Изложбата ще се проведе ${currentExhibition.date}`}
+                  </p>
+                )}
+                <p className="text-base text-[#495464]/70 flex items-center gap-2">
+                  <IconLocation className="w-5 h-5 text-[#495464]" />
+                  Галерия nOva art space, ул. Съборна №3 (ниво -1)
+                </p>
+              </div>
+
+              {/* Author */}
+              {currentExhibition.author && (
+                <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4">
+                  {currentExhibition.author.includes(",") ? "Автори" : "Автор"}:{" "}
+                  {currentExhibition.author}
+                </p>
+              )}
+
+              <Link
+                href={`/izlozhbi/${currentExhibition.slug}`}
+                className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+                Разгледай изложбата
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Организирай събитие */}
       <section className="py-20 bg-gradient-to-br from-[#E8E8E8] to-[#F5F5F5] relative overflow-hidden">

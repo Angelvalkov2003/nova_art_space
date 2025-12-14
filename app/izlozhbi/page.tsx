@@ -12,8 +12,11 @@ export default async function Izlozhbi() {
   const exhibitions = await getExhibitions();
 
   // Separate current (position 0) and past exhibitions
+  // Filter out archived exhibitions (position 1000)
   const currentExhibition = exhibitions.find((ex) => ex.position === 0);
-  const pastExhibitions = exhibitions.filter((ex) => ex.position !== 0);
+  const pastExhibitions = exhibitions.filter(
+    (ex) => ex.position !== 0 && ex.position !== 1000
+  );
 
   return (
     <div className="min-h-screen bg-white">

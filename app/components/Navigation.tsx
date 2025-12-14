@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   const menuItems = [
     { label: "Изложби", href: "/izlozhbi" },
@@ -14,6 +15,11 @@ export default function Navigation() {
     { label: "За нас", href: "/za-nas" },
     { label: "Контакти", href: "/kontakti" },
   ];
+
+  // Set mounted to true after component mounts (client-side only)
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -84,60 +90,64 @@ export default function Navigation() {
         </div>
       </nav>
 
-      {/* Backdrop overlay */}
-      <div
-        className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300 ${
-          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
-        onClick={() => setIsMenuOpen(false)}
-      />
+      {/* Backdrop overlay - only render on client after mount */}
+      {mounted && (
+        <>
+          <div
+            className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity duration-300 ${
+              isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+            onClick={() => setIsMenuOpen(false)}
+          />
 
-      {/* Mobile Menu - slides from right to left */}
-      <div
-        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-in-out ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col h-full">
-          {/* Menu Header */}
-          <div className="flex justify-between items-center p-6 border-b border-[#E8E8E8]">
-            <h2 className="text-xl font-semibold text-[#495464]">Меню</h2>
-            <button
-              className="text-[#495464] p-2 rounded-lg hover:bg-[#E8E8E8] transition-colors duration-300"
-              onClick={() => setIsMenuOpen(false)}
-              aria-label="Close menu"
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          {/* Menu Items */}
-          <div className="flex-1 overflow-y-auto py-4">
-            <div className="space-y-2 px-4">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="block text-[#495464] hover:text-[#495464] font-medium transition-all duration-300 px-4 py-3 rounded-lg hover:bg-[#E8E8E8]"
+          {/* Mobile Menu - slides from right to left */}
+          <div
+            className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white z-50 md:hidden shadow-2xl transform transition-transform duration-300 ease-in-out ${
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col h-full">
+              {/* Menu Header */}
+              <div className="flex justify-between items-center p-6 border-b border-[#E8E8E8]">
+                <h2 className="text-xl font-semibold text-[#495464]">Меню</h2>
+                <button
+                  className="text-[#495464] p-2 rounded-lg hover:bg-[#E8E8E8] transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
                 >
-                  {item.label}
-                </Link>
-              ))}
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Menu Items */}
+              <div className="flex-1 overflow-y-auto py-4">
+                <div className="space-y-2 px-4">
+                  {menuItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="block text-[#495464] hover:text-[#495464] font-medium transition-all duration-300 px-4 py-3 rounded-lg hover:bg-[#E8E8E8]"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 }

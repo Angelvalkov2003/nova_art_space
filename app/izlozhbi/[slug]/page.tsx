@@ -17,7 +17,8 @@ export default async function ExhibitionDetail({ params }: PageProps) {
   const { slug } = await params;
   const exhibition = await getExhibitionBySlug(slug);
 
-  if (!exhibition) {
+  // Block access to archived exhibitions (position 1000)
+  if (!exhibition || exhibition.position === 1000) {
     notFound();
   }
 
@@ -176,4 +177,3 @@ export default async function ExhibitionDetail({ params }: PageProps) {
     </div>
   );
 }
-

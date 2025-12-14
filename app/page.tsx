@@ -123,7 +123,7 @@ export default function Home() {
               />
             </div>
             <Link
-              href="/subitiya"
+              href="/kontakti#zapitvane"
               className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
             >
               Изпрати запитване

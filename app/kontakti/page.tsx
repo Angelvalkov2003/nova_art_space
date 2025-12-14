@@ -1,5 +1,8 @@
+"use client";
+
 import Navigation from "../components/Navigation";
 import Link from "next/link";
+import { useState } from "react";
 import {
   IconLocation,
   IconPhone,
@@ -10,6 +13,52 @@ import {
 } from "../components/Icons";
 
 export default function Kontakti() {
+  const [formData, setFormData] = useState({
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Грешка при изпращане");
+      }
+
+      setSubmitStatus({
+        type: "success",
+        message: "Съобщението е изпратено успешно! Ще се свържем с вас скоро.",
+      });
+      setFormData({ email: "", phone: "", message: "" });
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Грешка при изпращане на съобщението. Моля опитайте отново.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -118,7 +167,7 @@ export default function Kontakti() {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 mb-16">
             <h2 className="text-2xl font-bold text-[#495464] mb-4">Карта</h2>
             <div className="rounded-lg overflow-hidden shadow-md border border-[#E8E8E8]">
               <iframe
@@ -132,6 +181,107 @@ export default function Kontakti() {
                 className="rounded-lg"
               ></iframe>
             </div>
+          </div>
+
+          {/* Contact Form */}
+          <div
+            id="zapitvane"
+            className="mt-16 pt-16 border-t-2 border-[#E8E8E8]"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-12 h-0.5 bg-[#495464]"></span>
+              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                Запитване
+              </span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+              Изпрати запитване
+            </h2>
+            <p className="text-lg text-[#495464]/70 mb-8">
+              Попълнете формата по-долу и ще се свържем с вас възможно
+              най-скоро.
+            </p>
+
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-[#495464] mb-2"
+                >
+                  Имейл <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464] text-[#495464]"
+                  placeholder="ваш@имейл.com"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-[#495464] mb-2"
+                >
+                  Телефон
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phone: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464] text-[#495464]"
+                  placeholder="0888 123 456"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-[#495464] mb-2"
+                >
+                  Съобщение <span className="text-red-500">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  required
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
+                  className="w-full px-4 py-3 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464] text-[#495464] resize-none"
+                  placeholder="Напишете вашето съобщение тук..."
+                />
+              </div>
+
+              {submitStatus.type && (
+                <div
+                  className={`p-4 rounded-lg ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 border border-green-200 text-green-800"
+                      : "bg-red-50 border border-red-200 text-red-800"
+                  }`}
+                >
+                  {submitStatus.message}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#495464] text-white px-8 py-4 rounded-lg font-medium hover:bg-[#3a4149] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? "Изпращане..." : "Изпрати запитване"}
+              </button>
+            </form>
           </div>
         </div>
       </div>

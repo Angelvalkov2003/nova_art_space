@@ -48,8 +48,12 @@ export default async function Novini() {
         <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6">
           Новини и акценти
         </h1>
-        <p className="text-xl text-[#495464]/80 mb-12 leading-relaxed">
+        <p className="text-xl text-[#495464]/80 mb-4 leading-relaxed">
           Следете последните изложби, събития и инициативи на nOva art space.
+        </p>
+        <p className="text-xl text-[#495464]/80 mb-12 leading-relaxed">
+          Тук споделяме моменти, които оформят нашата културна и професионална
+          динамика.
         </p>
 
         {news.length === 0 ? (

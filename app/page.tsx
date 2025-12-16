@@ -18,11 +18,17 @@ import {
   IconOffice,
 } from "./components/Icons";
 import { getExhibitions } from "./lib/exhibitions";
+import { getNews } from "./lib/news";
 
 export default async function Home() {
   // Fetch current exhibition (position 0)
   const exhibitions = await getExhibitions();
   const currentExhibition = exhibitions.find((ex) => ex.position === 0);
+
+  // Fetch news
+  const news = await getNews();
+  const mainNews = news.find((n) => n.position === 0);
+  const otherNews = news.filter((n) => n.position !== 0);
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -259,22 +265,38 @@ export default async function Home() {
                 професионална динамика.
               </p>
             </div>
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 mb-8 border border-[#E8E8E8]">
-              <div className="flex items-start gap-4">
-                <IconNewspaper className="w-8 h-8 text-[#495464] flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="font-semibold text-[#495464] mb-2">
-                    Последна новина
-                  </h3>
-                  <p className="text-sm text-[#495464]/70 mb-2">
-                    Конкурс за млади автори „SCULPTING THE FUTURE"
-                  </p>
-                  <p className="text-xs text-[#495464]/60">
-                    nOva art space даде сцена на новото поколение таланти.
-                  </p>
+
+            {/* Главна новина */}
+            {mainNews && (
+              <div className="mb-12 pb-8 border-b-2 border-[#E8E8E8]">
+                <div className="mb-4">
+                  <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+                    <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                    Главна новина
+                  </span>
                 </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-3">
+                  {mainNews.title}
+                </h3>
+                {mainNews.subtitle && (
+                  <p className="text-lg text-[#495464]/70 mb-6">
+                    {mainNews.subtitle}
+                  </p>
+                )}
+                {mainNews.mainImage && (
+                  <div className="mb-6 rounded-lg overflow-hidden">
+                    <Image
+                      src={mainNews.mainImage}
+                      alt={mainNews.title}
+                      width={800}
+                      height={500}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                )}
               </div>
-            </div>
+            )}
+
             <Link
               href="/novini"
               className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"

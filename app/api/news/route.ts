@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { supabase, supabaseAdmin } from '../../lib/supabase';
 import { getSupabaseServerClient } from '../../lib/auth';
-import { generateSlug } from '../../lib/exhibitions';
+import { generateSlug } from '../../lib/news';
 
-// GET - Fetch all exhibitions
+// GET - Fetch all news (including archived for admin panel)
 export async function GET() {
   try {
     const { data, error } = await supabase
-      .from('exhibitions')
+      .from('news')
       .select('*')
       .order('position', { ascending: false });
 
@@ -15,7 +15,7 @@ export async function GET() {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json(data || []);
   } catch (error) {
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -24,7 +24,7 @@ export async function GET() {
   }
 }
 
-// POST - Create new exhibition
+// POST - Create new news
 export async function POST(request: NextRequest) {
   try {
     const supabaseAuth = await getSupabaseServerClient();
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { title, subtitle, text, main_image, author, date, position, images } = body;
+    const { title, subtitle, text, main_image, position, images } = body;
 
     if (!title) {
       return NextResponse.json(
@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     // Check if slug already exists and make it unique if needed
     if (slug) {
       const { data: existing } = await supabaseAdmin
-        .from('exhibitions')
+        .from('news')
         .select('id')
         .eq('slug', slug)
         .limit(1);
@@ -74,7 +74,7 @@ export async function POST(request: NextRequest) {
         let counter = 1;
         let uniqueSlug = `${slug}-${counter}`;
         let checkResult = await supabaseAdmin
-          .from('exhibitions')
+          .from('news')
           .select('id')
           .eq('slug', uniqueSlug)
           .limit(1);
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
           counter++;
           uniqueSlug = `${slug}-${counter}`;
           checkResult = await supabaseAdmin
-            .from('exhibitions')
+            .from('news')
             .select('id')
             .eq('slug', uniqueSlug)
             .limit(1);
@@ -92,25 +92,23 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Insert exhibition using admin client (bypasses RLS)
-    const { data: exhibition, error: exhibitionError } = await supabaseAdmin
-      .from('exhibitions')
+    // Insert news using admin client (bypasses RLS)
+    const { data: newsItem, error: newsError } = await supabaseAdmin
+      .from('news')
       .insert({
         title,
         subtitle: subtitle || null,
         text: text || null,
         main_image: main_image || null,
-        author: author || null,
-        date: date || null,
         position: position || 0,
         slug,
       })
       .select()
       .single();
 
-    if (exhibitionError) {
+    if (newsError) {
       return NextResponse.json(
-        { error: exhibitionError.message },
+        { error: newsError.message },
         { status: 500 }
       );
     }
@@ -120,14 +118,14 @@ export async function POST(request: NextRequest) {
       const imageRecords = images
         .filter((url: string) => url && url.trim() !== '')
         .map((url: string, index: number) => ({
-          exhibition_id: exhibition.id,
+          news_id: newsItem.id,
           image_url: url,
           image_order: index + 1,
         }));
 
       if (imageRecords.length > 0) {
         const { error: imagesError } = await supabaseAdmin
-          .from('exhibition_images')
+          .from('news_images')
           .insert(imageRecords);
 
         if (imagesError) {
@@ -137,7 +135,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ success: true, data: exhibition });
+    return NextResponse.json({ success: true, data: newsItem });
   } catch (error) {
     return NextResponse.json(
       { error: 'Internal server error' },
@@ -145,6 +143,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-
-

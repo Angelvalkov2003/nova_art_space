@@ -1,16 +1,19 @@
 import Navigation from "../components/Navigation";
 import Link from "next/link";
-import {
-  IconTrophy,
-  IconShirt,
-  IconBuilding,
-  IconChat,
-  IconCamera,
-  IconFacebook,
-  IconVideo,
-} from "../components/Icons";
+import { getNews } from "../lib/news";
+import Image from "next/image";
 
-export default function Novini() {
+// Force dynamic rendering to always fetch fresh data
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Novini() {
+  const news = await getNews();
+
+  // Separate main news (position 0) and other news
+  const mainNews = news.find((n) => n.position === 0);
+  const otherNews = news.filter((n) => n.position !== 0);
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -49,144 +52,108 @@ export default function Novini() {
           Следете последните изложби, събития и инициативи на nOva art space.
         </p>
 
-        <div className="space-y-16">
-          {/* Новина 1 */}
-          <article className="pb-12 border-b-2 border-[#E8E8E8] hover:bg-[#E8E8E8]/20 transition-colors duration-300 rounded-lg p-6 -m-6">
-            <div className="flex items-start gap-4 mb-4">
-              <IconTrophy className="w-10 h-10 text-[#495464] flex-shrink-0" />
-              <div className="flex-1">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
-                  Конкурс за млади автори „SCULPTING THE FUTURE"
-                </h2>
-                <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-6 font-medium">
-                  nOva art space даде сцена на новото поколение таланти.
-                </h3>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4">
-                  С огромна радост обявяваме победителите в конкурса за млади
-                  артисти Sculpting the future. Благодарим на над 150-те
-                  кандидата, които изпратиха портфолиата си - вдъхновихте ни с
-                  таланта, смелостта и разнообразието на идеите си.
-                </p>
-                <div className="mb-4">
-                  <p className="text-lg font-semibold text-[#495464] mb-2">
-                    Честито на:
-                  </p>
-                  <ul className="list-disc list-inside space-y-1 text-lg text-[#495464]/80 ml-4">
-                    <li>Десислава Латинова - първо място</li>
-                    <li>Стефан Коцев - второ място</li>
-                    <li>Никола Цветанов - трето място</li>
-                  </ul>
-                </div>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4">
-                  Искаме да изразим своята дълбока благодарност към всички
-                  участници.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4">
-                  Нямаме търпение да споделим предстоящата самостоятелна изложба
-                  на Десислава Латинова през 2026 г.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  Сърдечно благодарим и на @credissimo - нашия генерален
-                  спонсор, чиято подкрепа направи възможно този конкурс да се
-                  случи.
-                </p>
-              </div>
-            </div>
-          </article>
+        {news.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-lg text-[#495464]/70">
+              Все още няма публикувани новини.
+            </p>
+          </div>
+        ) : (
+          <>
+            {/* Главна новина */}
+            {mainNews && (
+              <Link
+                href={`/novini/${mainNews.slug}`}
+                className="block mb-20 pb-16 border-b-2 border-[#E8E8E8] relative group cursor-pointer max-w-4xl"
+              >
+                <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
+                <div className="relative z-10">
+                  <div className="mb-6">
+                    <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+                      <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                      Главна новина
+                    </span>
+                  </div>
 
-          {/* Новина 2 */}
-          <article className="pb-12 border-b-2 border-[#E8E8E8] hover:bg-[#E8E8E8]/20 transition-colors duration-300 rounded-lg p-6 -m-6">
-            <div className="flex items-start gap-4 mb-4">
-              <IconShirt className="w-10 h-10 text-[#495464] flex-shrink-0" />
-              <div className="flex-1">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
-                  Мода и изкуство: Бляскавото ревю на студентите и
-                  преподавателите по мода на НБУ
-                </h2>
-                <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-6 font-medium">
-                  Галерийното пространство се превърна в моден подиум.
-                </h3>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4">
-                  nOva art space бе домакин на бляскавото ревю на студентите и
-                  преподавателите по мода на НБУ — изискано светско събитие,
-                  което преобрази галерията в моден подиум с артистична визия.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4 flex items-start gap-2">
-                  <IconVideo className="w-5 h-5 text-[#495464] flex-shrink-0 mt-0.5" />
-                  <span>
-                    Вижте моменти от вечерта — как светлината, естетиката и
-                    динамичният дизайн превръщат nOva art space в предпочитан
-                    избор за арт събития във всичките им форми.
+                  {/* Title */}
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3 group-hover:text-[#3a4149] transition-colors">
+                    {mainNews.title}
+                  </h2>
+
+                  {/* Subtitle */}
+                  {mainNews.subtitle && (
+                    <p className="text-lg text-[#495464]/70 mb-6">
+                      {mainNews.subtitle}
+                    </p>
+                  )}
+
+                  {/* Main Image */}
+                  {mainNews.mainImage && (
+                    <div className="mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity w-full max-w-md">
+                      <Image
+                        src={mainNews.mainImage}
+                        alt={mainNews.title}
+                        width={500}
+                        height={300}
+                        className="w-full h-auto object-cover"
+                      />
+                    </div>
+                  )}
+                </div>
+              </Link>
+            )}
+
+            {/* Други новини */}
+            {otherNews.length > 0 && (
+              <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="w-12 h-0.5 bg-[#495464]"></span>
+                  <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                    Други новини
                   </span>
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  nOva art space — галерия, която живее с пулса на града и
-                  създава стойност за вашия бранд.
-                </p>
-              </div>
-            </div>
-          </article>
+                </div>
 
-          {/* Новина 3 */}
-          <article className="pb-12 border-b-2 border-[#E8E8E8] hover:bg-[#E8E8E8]/20 transition-colors duration-300 rounded-lg p-6 -m-6">
-            <div className="flex items-start gap-4 mb-4">
-              <IconBuilding className="w-10 h-10 text-[#495464] flex-shrink-0" />
-              <div className="flex-1">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
-                  Нов етап за nOva art space: разширено пространство и нови
-                  възможности
-                </h2>
-                <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-6 font-medium">
-                  Галерията представи обновена визия и 400 кв.м премиум площ за
-                  изложби и събития.
-                </h3>
-                <p className="text-lg text-[#495464]/80 leading-relaxed mb-4">
-                  Новото пространство на nOva art space впечатлява със своята
-                  архитектура, ескалаторен достъп, професионално оборудване и
-                  възможности за реализиране на големи изложби и престижни
-                  корпоративни събития.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  Разширението подчертава амбицията на галерията да бъде водещ
-                  културен и бизнес хъб в София.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          {/* Новина 4 */}
-          <article className="hover:bg-[#E8E8E8]/20 transition-colors duration-300 rounded-lg p-6 -m-6">
-            <div className="flex items-start gap-4">
-              <IconChat className="w-10 h-10 text-[#495464] flex-shrink-0" />
-              <div className="flex-1">
-                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
-                  Открит разговор за съвременното изкуство и инвестиция ли е
-                  изкуството в България?
-                </h2>
-                <div className="flex flex-col sm:flex-row gap-4 mt-6">
-                  <a
-                    href="https://www.instagram.com/p/DI1XiSmsE32/?hl=en"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 hover:underline"
-                  >
-                    <IconCamera className="w-4 h-4 text-[#495464]" />
-                    Виж в Instagram
-                  </a>
-                  <a
-                    href="https://www.facebook.com/reel/1854580805335661"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 hover:underline"
-                  >
-                    <IconFacebook className="w-4 h-4 text-[#495464]" />
-                    Виж във Facebook
-                  </a>
+                <div className="space-y-16">
+                  {otherNews.map((newsItem, idx) => (
+                    <Link
+                      key={idx}
+                      href={`/novini/${newsItem.slug}`}
+                      className={`block ${
+                        idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
+                      } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer max-w-4xl`}
+                    >
+                      <div className="flex flex-col md:flex-row gap-6">
+                        {newsItem.mainImage && (
+                          <div className="md:w-1/3 shrink-0">
+                            <div className="rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
+                              <Image
+                                src={newsItem.mainImage}
+                                alt={newsItem.title}
+                                width={400}
+                                height={300}
+                                className="w-full h-64 md:h-full object-cover"
+                              />
+                            </div>
+                          </div>
+                        )}
+                        <div className="flex-1">
+                          <h2 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2 group-hover:text-[#3a4149] transition-colors">
+                            {newsItem.title}
+                          </h2>
+                          {newsItem.subtitle && (
+                            <h3 className="text-lg md:text-xl text-[#495464]/70 mb-4 font-medium">
+                              {newsItem.subtitle}
+                            </h3>
+                          )}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </div>
-            </div>
-          </article>
-        </div>
+            )}
+          </>
+        )}
       </div>
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">

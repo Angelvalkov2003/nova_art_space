@@ -5,7 +5,7 @@ interface RouteParams {
   params: Promise<{ id: string }>;
 }
 
-// GET - Fetch images for an exhibition
+// GET - Fetch images for a news item
 export async function GET(
   request: Request,
   { params }: RouteParams
@@ -14,9 +14,9 @@ export async function GET(
     const { id } = await params;
 
     const { data, error } = await supabase
-      .from('exhibition_images')
+      .from('news_images')
       .select('image_url')
-      .eq('exhibition_id', id)
+      .eq('news_id', id)
       .order('image_order', { ascending: true });
 
     if (error) {
@@ -32,6 +32,3 @@ export async function GET(
     );
   }
 }
-
-
-

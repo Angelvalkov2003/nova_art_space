@@ -4,6 +4,7 @@ import { IconCalendar, IconLocation, IconParty } from "../../components/Icons";
 import { getExhibitionBySlug } from "../../lib/exhibitions";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import ExhibitionGallery from "../../components/ExhibitionGallery";
 
 // Force dynamic rendering to always fetch fresh data
 export const dynamic = "force-dynamic";
@@ -64,11 +65,16 @@ export default async function ExhibitionDetail({ params }: PageProps) {
           </div>
         )}
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6">
-          {exhibition.subtitle
-            ? `„${exhibition.title}" - ${exhibition.subtitle}`
-            : `„${exhibition.title}"`}
-        </h1>
+        <div className="mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#495464]">
+            „{exhibition.title}"
+          </h1>
+          {exhibition.subtitle && (
+            <p className="text-2xl md:text-3xl text-[#495464]/50 mt-2">
+              {exhibition.subtitle}
+            </p>
+          )}
+        </div>
 
         {/* Main Image */}
         {exhibition.mainImage && (
@@ -139,22 +145,10 @@ export default async function ExhibitionDetail({ params }: PageProps) {
                 Галерия
               </span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {exhibition.images.map((image, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-lg overflow-hidden aspect-[4/3]"
-                >
-                  <Image
-                    src={image}
-                    alt={`${exhibition.title} - Снимка ${idx + 1}`}
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
+            <ExhibitionGallery
+              images={exhibition.images}
+              title={exhibition.title}
+            />
           </div>
         )}
       </div>
@@ -169,5 +163,6 @@ export default async function ExhibitionDetail({ params }: PageProps) {
     </div>
   );
 }
+
 
 

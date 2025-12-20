@@ -1,8 +1,10 @@
 import Navigation from "../../components/Navigation";
 import Link from "next/link";
 import { getNewsBySlug } from "../../lib/news";
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import NewsGallery from "../../components/NewsGallery";
+import { NewsGalleryProvider } from "../../components/NewsGalleryContext";
+import NewsLightbox from "../../components/NewsLightbox";
 
 // Force dynamic rendering to always fetch fresh data
 export const dynamic = "force-dynamic";
@@ -22,8 +24,9 @@ export default async function NewsDetail({ params }: PageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navigation />
+    <NewsGalleryProvider>
+      <div className="min-h-screen bg-white">
+        <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
         <Link
@@ -63,7 +66,7 @@ export default async function NewsDetail({ params }: PageProps) {
           </div>
         )}
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-2">
           {newsItem.title}
         </h1>
 
@@ -75,15 +78,12 @@ export default async function NewsDetail({ params }: PageProps) {
 
         {/* Main Image */}
         {newsItem.mainImage && (
-          <div className="mb-8 rounded-lg overflow-hidden">
-            <Image
-              src={newsItem.mainImage}
-              alt={newsItem.title}
-              width={1200}
-              height={600}
-              className="w-full h-auto object-cover"
-            />
-          </div>
+          <NewsGallery
+            mainImage={newsItem.mainImage}
+            images={[]}
+            title={newsItem.title}
+            showOnlyMain={true}
+          />
         )}
 
         {/* Text content */}
@@ -103,33 +103,18 @@ export default async function NewsDetail({ params }: PageProps) {
           </div>
         )}
 
-        {/* Gallery Images */}
+        {/* Additional Gallery Images */}
         {newsItem.images && newsItem.images.length > 0 && (
-          <div>
-            <div className="flex items-center gap-3 mb-8">
-              <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
-                Галерия
-              </span>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {newsItem.images.map((image, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-lg overflow-hidden aspect-[4/3]"
-                >
-                  <Image
-                    src={image}
-                    alt={`${newsItem.title} - Снимка ${idx + 1}`}
-                    width={400}
-                    height={300}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <NewsGallery
+            mainImage={newsItem.mainImage}
+            images={newsItem.images}
+            title={newsItem.title}
+            showOnlyGallery={true}
+          />
         )}
+
+        {/* Lightbox - rendered once */}
+        <NewsLightbox title={newsItem.title} />
       </div>
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
@@ -139,6 +124,7 @@ export default async function NewsDetail({ params }: PageProps) {
           </p>
         </div>
       </footer>
-    </div>
+      </div>
+    </NewsGalleryProvider>
   );
 }

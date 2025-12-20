@@ -14,7 +14,6 @@ import {
   IconGlobe,
   IconCalendar,
   IconParty,
-  IconNewspaper,
   IconOffice,
 } from "./components/Icons";
 import { getExhibitions } from "./lib/exhibitions";
@@ -28,7 +27,6 @@ export default async function Home() {
   // Fetch news
   const news = await getNews();
   const mainNews = news.find((n) => n.position === 0);
-  const otherNews = news.filter((n) => n.position !== 0);
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -70,17 +68,13 @@ export default async function Home() {
 
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
                 {currentExhibition.date && (
-                  <p className="text-lg text-[#495464]/90 leading-relaxed mb-2 font-medium flex items-center gap-2">
+                  <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
                     <IconCalendar className="w-5 h-5 text-[#495464]" />
                     {currentExhibition.date.includes("Изложбата")
                       ? currentExhibition.date
                       : `Изложбата ще се проведе ${currentExhibition.date}`}
                   </p>
                 )}
-                <p className="text-base text-[#495464]/70 flex items-center gap-2">
-                  <IconLocation className="w-5 h-5 text-[#495464]" />
-                  Галерия nOva art space, ул. Съборна №3 (ниво -1)
-                </p>
               </div>
 
               {/* Author */}
@@ -251,19 +245,6 @@ export default async function Home() {
               <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
                 Новини
               </span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-              Новини и акценти
-            </h2>
-            <div className="space-y-4 mb-8">
-              <p className="text-lg text-[#495464]/80 leading-relaxed">
-                Следете последните изложби, събития и инициативи на nOva art
-                space.
-              </p>
-              <p className="text-lg text-[#495464]/80 leading-relaxed">
-                Тук споделяме моменти, които оформят нашата културна и
-                професионална динамика.
-              </p>
             </div>
 
             {/* Главна новина */}

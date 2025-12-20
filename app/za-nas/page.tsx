@@ -1,6 +1,9 @@
+"use client";
+
 import Navigation from "../components/Navigation";
 import Link from "next/link";
 import Image from "next/image";
+import ImageCarousel from "../components/ImageCarousel";
 import {
   IconPalette,
   IconEye,
@@ -13,6 +16,25 @@ import {
 } from "../components/Icons";
 
 export default function ZaNas() {
+  // Images for each gallery location
+  const georgeWashingtonImages = [
+    "/forum_george_washington_main.jpg",
+    "/forum_george_washington_2.jpg",
+    "/forum_george_washington_3.jpg",
+  ];
+
+  const vasilLevskiImages = [
+    "/forum_vasil_levski_main.jpg",
+    "/forum_vasil_levski_2.jpg",
+    "/forum_vasil_levski_3.jpg",
+    "/forum_vasil_levski_4.jpg",
+  ];
+
+  const novaArtSpaceImages = [
+    "/nova_art_space1_main.jpg",
+    "/nova_art_space1_2.jpg",
+    "/nova_art_space_3.jpg",
+  ];
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
@@ -123,18 +145,42 @@ export default function ZaNas() {
               Това е първият голям мост между артистичната среда на Пловдив и
               столицата.
             </p>
+            {georgeWashingtonImages.length > 0 && (
+              <div className="mt-6">
+                <ImageCarousel
+                  images={georgeWashingtonImages}
+                  alt='Арт център "Форум" на ул. "Георг Вашингтон" 24'
+                />
+              </div>
+            )}
             <p>
               Развитието продължава през 2014 г. с трето пространство – галерия
               „Форум" на бул. „Васил Левски" 93, София, място, което бързо се
               превръща в важен ориентир за колекционери, ценители и съвременни
               автори.
             </p>
+            {vasilLevskiImages.length > 0 && (
+              <div className="mt-6">
+                <ImageCarousel
+                  images={vasilLevskiImages}
+                  alt='Галерия "Форум" на бул. "Васил Левски" 93'
+                />
+              </div>
+            )}
             <p>
               През 2019 г. се появява четвъртото пространство – nOva art space,
               тогава вече с нова концепция: хипермодерна сцена за изложби,
               концерти, театрални форми, премиери и разнообразни културни
               формати, отговарящи на динамиката на съвременната публика.
             </p>
+            {novaArtSpaceImages.length > 0 && (
+              <div className="mt-6">
+                <ImageCarousel
+                  images={novaArtSpaceImages}
+                  alt="nOva art space"
+                />
+              </div>
+            )}
             <p>
               През 2025 г. галерията достига своя най-мащабен етап –
               преместването и разширяването на ул. „Съборна" № 3, превръщайки се

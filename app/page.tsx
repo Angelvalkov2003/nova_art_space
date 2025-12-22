@@ -15,6 +15,8 @@ import {
   IconCalendar,
   IconParty,
   IconOffice,
+  IconFacebook,
+  IconInstagram,
 } from "./components/Icons";
 import { getExhibitions } from "./lib/exhibitions";
 import { getNews } from "./lib/news";
@@ -463,16 +465,18 @@ export default async function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors duration-300"
+                    aria-label="Instagram"
                   >
-                    Instagram
+                    <IconInstagram className="w-6 h-6 text-white/80" />
                   </a>
                   <a
                     href="https://www.facebook.com/artspacenOva"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-white transition-colors duration-300"
+                    aria-label="Facebook"
                   >
-                    Facebook
+                    <IconFacebook className="w-6 h-6 text-white/80" />
                   </a>
                 </li>
               </ul>

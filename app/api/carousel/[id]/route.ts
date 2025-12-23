@@ -5,7 +5,7 @@ import { getSupabaseServerClient } from '../../../lib/auth';
 // PUT - Update carousel slide
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabaseAuth = await getSupabaseServerClient();
@@ -17,6 +17,7 @@ export async function PUT(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    const { id } = await params;
     const body = await request.json();
     const { image_url, link_url, position } = body;
 
@@ -39,7 +40,7 @@ export async function PUT(
     const { data: slide, error: slideError } = await supabaseAdmin
       .from('carousel_slides')
       .update(updateData)
-      .eq('id', params.id)
+      .eq('id', id)
       .select()
       .single();
 
@@ -62,7 +63,7 @@ export async function PUT(
 // DELETE - Delete carousel slide
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const supabaseAuth = await getSupabaseServerClient();
@@ -73,6 +74,8 @@ export async function DELETE(
     if (!user) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
+
+    const { id } = await params;
 
     if (!supabaseAdmin) {
       return NextResponse.json(
@@ -85,7 +88,7 @@ export async function DELETE(
     const { error: deleteError } = await supabaseAdmin
       .from('carousel_slides')
       .delete()
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (deleteError) {
       return NextResponse.json(

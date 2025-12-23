@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import NewsAdminPanel from "./NewsAdminPanel";
+import CarouselAdminPanel from "./CarouselAdminPanel";
 
 interface Exhibition {
   id: string;
@@ -20,7 +21,7 @@ interface ExhibitionWithImages extends Exhibition {
   images: string[];
 }
 
-type TabType = "exhibitions" | "news";
+type TabType = "exhibitions" | "news" | "carousel";
 
 export default function AdminPanel() {
   const router = useRouter();
@@ -382,12 +383,24 @@ export default function AdminPanel() {
             >
               Новини
             </button>
+            <button
+              onClick={() => setActiveTab("carousel")}
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "carousel"
+                  ? "bg-white text-[#495464] border-b-2 border-[#495464]"
+                  : "text-[#495464]/70 hover:text-[#495464]"
+              }`}
+            >
+              Карусела
+            </button>
           </div>
         </div>
       </div>
 
       {activeTab === "news" ? (
         <NewsAdminPanel />
+      ) : activeTab === "carousel" ? (
+        <CarouselAdminPanel />
       ) : (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-6">
@@ -1552,3 +1565,4 @@ export default function AdminPanel() {
     </div>
   );
 }
+

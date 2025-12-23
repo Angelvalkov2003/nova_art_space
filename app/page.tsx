@@ -20,6 +20,7 @@ import {
 } from "./components/Icons";
 import { getExhibitions } from "./lib/exhibitions";
 import { getNews } from "./lib/news";
+import { getCarouselSlides } from "./lib/carousel";
 
 export default async function Home() {
   // Fetch current exhibition (position 0)
@@ -29,10 +30,14 @@ export default async function Home() {
   // Fetch news
   const news = await getNews();
   const mainNews = news.find((n) => n.position === 0);
+
+  // Fetch carousel slides
+  const carouselSlides = await getCarouselSlides();
+
   return (
     <div className="min-h-screen bg-white">
       <Navigation />
-      <MainSlider />
+      <MainSlider slides={carouselSlides} />
 
       {/* Настояща изложба */}
       {currentExhibition && (

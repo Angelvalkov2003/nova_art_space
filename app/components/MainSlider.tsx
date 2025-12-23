@@ -1,113 +1,239 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { CarouselSlide } from "../lib/carousel";
 
-const slides = [
-  {
-    id: 1,
-    title: "Изкуството разказва своята история",
-    subtitle:
-      "Настоящата изложба събира творби, които говорят чрез детайл, жест и чувство.",
-    text: "Класически и съвременни автори, обединени в селекция, която се усеща, преди да се види. Произведения, които споделят свои истини, разкриват нови светове и намират място в собственото ни въображение.",
-    cta: "Разгледай изложбата",
-    href: "/izlozhbi",
-  },
-  {
-    id: 2,
-    title: "Пространството, в което всяко събитие се превръща в изкуство",
-    subtitle:
-      "Изкуството е нашият отличителен знак — атмосфера, която издига всяко събитие и му придава естествена елегантност.",
-    text: "В nOva art space - пространството работи за идеята ви. Галерийната среда оформя стил, задава присъствие и превръща всеки момент в изживяване с характер. Изкуството е част от самата концепция — силен визуален и емоционален акцент, който създава онова незабравимо първо впечатление и остава в съзнанието на гостите.",
-    cta: "Организирай събитие",
-    href: "/subitiya",
-  },
-  {
-    id: 3,
-    title: "Пространство, в което изкуство и бизнес се срещат",
-    subtitle:
-      "nOva art space обединява галерия от висок клас и премиум среда за събития — място, което създава стойност във всяко свое измерение.",
-    text: "Тук изкуството задава стандарта, а пространството го следва. Представяме ценни класически автори и водещи съвременни имена в среда, която говори за престиж, характер и визия. nOva art space е изборът на клиенти, които разбират силата на естетиката — в културата, в бизнеса и в начина, по който се изгражда впечатление.",
-    cta: "Научи повече",
-    href: "/za-nas",
-  },
-];
+interface MainSliderProps {
+  slides: CarouselSlide[];
+}
 
-export default function MainSlider() {
+export default function MainSlider({ slides }: MainSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const slideDirectionRef = useRef<"next" | "prev">("next");
+
+  // If no slides from database, don't render
+  if (!slides || slides.length === 0) {
+    return null;
+  }
+
+  // Function to start/reset the timer
+  const startTimer = useCallback(() => {
+    // Clear existing timer
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+    }
+
+    // Start new timer
+    timerRef.current = setInterval(() => {
+      if (slideDirectionRef.current === "next") {
+        setCurrentSlide((prev) => (prev + 1) % slides.length);
+      } else {
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+      }
+    }, 3000);
+  }, [slides.length]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, []);
+    if (slides.length === 0) return;
+
+    // Start initial timer
+    startTimer();
+
+    // Cleanup on unmount
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [slides.length, startTimer]);
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+    setDragOffset(0);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const currentTouch = e.targetTouches[0].clientX;
+    const diff = touchStart - currentTouch;
+    setDragOffset(-diff);
+  };
+
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
+
+    const touchEndPos = e.changedTouches[0].clientX;
+    const distance = touchStart - touchEndPos;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      slideDirectionRef.current = "next";
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      startTimer();
+    } else if (isRightSwipe) {
+      slideDirectionRef.current = "prev";
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+      startTimer();
+    }
+
+    setIsDragging(false);
+    setDragOffset(0);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.clientX);
+    setIsDragging(true);
+    setDragOffset(0);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || touchStart === null) return;
+    const diff = touchStart - e.clientX;
+    setDragOffset(-diff);
+  };
+
+  const onMouseUp = (e: React.MouseEvent) => {
+    if (!touchStart) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
+
+    const mouseEndPos = e.clientX;
+    const distance = touchStart - mouseEndPos;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      slideDirectionRef.current = "next";
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      startTimer();
+    } else if (isRightSwipe) {
+      slideDirectionRef.current = "prev";
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+      startTimer();
+    }
+
+    setIsDragging(false);
+    setDragOffset(0);
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   return (
-    <div className="relative w-full min-h-[500px] md:h-[750px] bg-gradient-to-br from-[#E8E8E8] via-[#F5F5F5] to-[#E8E8E8] pt-24 md:pt-0 overflow-hidden">
+    <div
+      className="relative w-full min-h-[500px] md:h-[750px] bg-gradient-to-br from-[#E8E8E8] via-[#F5F5F5] to-[#E8E8E8] pt-24 md:pt-0 overflow-hidden select-none"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+      onMouseDown={onMouseDown}
+      onMouseMove={onMouseMove}
+      onMouseUp={onMouseUp}
+      onMouseLeave={() => {
+        setIsDragging(false);
+        setDragOffset(0);
+        setTouchStart(null);
+        setTouchEnd(null);
+      }}
+    >
       {/* Decorative background elements */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-20 right-20 w-64 h-64 bg-[#495464] rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#495464] rounded-full blur-3xl"></div>
       </div>
 
-      {slides.map((slide, index) => (
-        <div
-          key={slide.id}
-          className={`absolute inset-0 transition-all duration-1000 ${
-            index === currentSlide
-              ? "opacity-100 z-10 translate-x-0"
-              : "opacity-0 z-0 translate-x-4"
-          }`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 h-full flex items-center relative z-10">
-            <div className="max-w-3xl w-full">
-              <div className="mb-4">
-                <span className="inline-block w-12 h-0.5 bg-[#495464] mb-4"></span>
-              </div>
-              <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 text-[#495464] leading-tight">
-                {slide.title}
-              </h1>
-              <h2 className="text-base sm:text-lg md:text-2xl mb-4 md:mb-6 text-[#495464]/90 font-medium leading-snug">
-                {slide.subtitle}
-              </h2>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 text-[#495464]/80 leading-relaxed">
-                {slide.text}
-              </p>
+      <div ref={containerRef} className="relative w-full h-full">
+        {slides.map((slide, index) => {
+          const slideOffset = index - currentSlide;
+          const isActive = index === currentSlide;
+
+          // Calculate transform with drag offset
+          let transformX = slideOffset * 100;
+          if (isDragging && isActive && containerRef.current) {
+            // Convert pixel offset to percentage based on container width
+            const containerWidth = containerRef.current.offsetWidth;
+            transformX += (dragOffset / containerWidth) * 100;
+          }
+
+          return (
+            <div
+              key={slide.id}
+              className="absolute inset-0"
+              style={{
+                transform: `translateX(${transformX}%)`,
+                transition: isDragging
+                  ? "none"
+                  : "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                opacity: Math.abs(slideOffset) <= 1 ? 1 : 0,
+                zIndex: isActive ? 10 : Math.abs(slideOffset),
+              }}
+            >
               <Link
-                href={slide.href}
-                className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-md text-sm md:text-base font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+                href={slide.link_url}
+                className="block w-full h-full cursor-pointer"
+                onClick={(e) => {
+                  if (isDragging) {
+                    e.preventDefault();
+                  }
+                }}
               >
-                {slide.cta}
-                <svg
-                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
+                <div className="relative w-full h-full">
+                  <Image
+                    src={slide.image_url}
+                    alt={`Carousel slide ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={index === 0}
+                    draggable={false}
                   />
-                </svg>
+                </div>
               </Link>
             </div>
-          </div>
-        </div>
-      ))}
+          );
+        })}
+      </div>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 bg-white/50 backdrop-blur-sm px-4 py-2 rounded-full">
         {slides.map((_, index) => (
           <button
             key={index}
-            onClick={() => goToSlide(index)}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              goToSlide(index);
+              // Determine direction based on index
+              if (index > currentSlide) {
+                slideDirectionRef.current = "next";
+              } else if (index < currentSlide) {
+                slideDirectionRef.current = "prev";
+              }
+              startTimer();
+            }}
             className={`h-2 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? "bg-[#495464] w-8 shadow-md"
@@ -120,9 +246,20 @@ export default function MainSlider() {
 
       {/* Navigation Arrows - Hidden on mobile, shown on desktop */}
       <button
-        onClick={() =>
-          setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
-        }
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!isDragging) {
+            // Set direction to previous
+            slideDirectionRef.current = "prev";
+            // Change slide immediately
+            setCurrentSlide(
+              (prev) => (prev - 1 + slides.length) % slides.length
+            );
+            // Restart timer
+            startTimer();
+          }
+        }}
         className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
         aria-label="Previous slide"
       >
@@ -141,7 +278,18 @@ export default function MainSlider() {
         </svg>
       </button>
       <button
-        onClick={() => setCurrentSlide((prev) => (prev + 1) % slides.length)}
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          if (!isDragging) {
+            // Set direction to next
+            slideDirectionRef.current = "next";
+            // Change slide immediately
+            setCurrentSlide((prev) => (prev + 1) % slides.length);
+            // Restart timer
+            startTimer();
+          }
+        }}
         className="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
         aria-label="Next slide"
       >

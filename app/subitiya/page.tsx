@@ -20,11 +20,23 @@ import {
   IconChampagne,
   IconHandshake,
 } from "../components/Icons";
+import { EventImage } from "../lib/eventImages";
 
 export default function Subitiya() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentImages, setCurrentImages] = useState<string[]>([]);
+  const [eventImages, setEventImages] = useState<{
+    koncert: EventImage[];
+    kokteil: EventImage[];
+    seminar: EventImage[];
+    produkt: EventImage[];
+  }>({
+    koncert: [],
+    kokteil: [],
+    seminar: [],
+    produkt: [],
+  });
 
   // Define all images for each category
   const concertImages = [
@@ -85,6 +97,40 @@ export default function Subitiya() {
     );
   };
 
+  // Fetch event images from database
+  useEffect(() => {
+    const fetchEventImages = async () => {
+      try {
+        const response = await fetch("/api/event-images");
+        const data: EventImage[] = await response.json();
+
+        const grouped: {
+          koncert: EventImage[];
+          kokteil: EventImage[];
+          seminar: EventImage[];
+          produkt: EventImage[];
+        } = {
+          koncert: [],
+          kokteil: [],
+          seminar: [],
+          produkt: [],
+        };
+
+        data.forEach((image) => {
+          if (grouped[image.category]) {
+            grouped[image.category].push(image);
+          }
+        });
+
+        setEventImages(grouped);
+      } catch (error) {
+        console.error("Error fetching event images:", error);
+      }
+    };
+
+    fetchEventImages();
+  }, []);
+
   // Keyboard navigation
   useEffect(() => {
     if (!lightboxOpen) return;
@@ -105,6 +151,16 @@ export default function Subitiya() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxOpen, currentImages.length]);
+
+  const openEventImagesLightbox = (category: 'koncert' | 'kokteil' | 'seminar' | 'produkt') => {
+    const images = eventImages[category].map(img => img.image_url);
+    if (images.length > 0) {
+      setCurrentImages(images);
+      setCurrentImageIndex(0);
+      setLightboxOpen(true);
+      document.body.style.overflow = "hidden";
+    }
+  };
 
   return (
     <div className="min-h-screen bg-white" style={{ scrollBehavior: "smooth" }}>
@@ -449,6 +505,29 @@ export default function Subitiya() {
               </div>
             ))}
           </div>
+          {eventImages.koncert.length > 0 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => openEventImagesLightbox('koncert')}
+                className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                Виж още снимки
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Cocktail Gallery Section */}
@@ -473,6 +552,29 @@ export default function Subitiya() {
               </div>
             ))}
           </div>
+          {eventImages.kokteil.length > 0 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => openEventImagesLightbox('kokteil')}
+                className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                Виж още снимки
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Seminar Gallery Section */}
@@ -497,6 +599,29 @@ export default function Subitiya() {
               </div>
             ))}
           </div>
+          {eventImages.seminar.length > 0 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => openEventImagesLightbox('seminar')}
+                className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                Виж още снимки
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Product Gallery Section */}
@@ -521,6 +646,29 @@ export default function Subitiya() {
               </div>
             ))}
           </div>
+          {eventImages.produkt.length > 0 && (
+            <div className="text-center mt-8">
+              <button
+                onClick={() => openEventImagesLightbox('produkt')}
+                className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                Виж още снимки
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

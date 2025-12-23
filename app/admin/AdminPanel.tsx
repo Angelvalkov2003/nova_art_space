@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import NewsAdminPanel from "./NewsAdminPanel";
 import CarouselAdminPanel from "./CarouselAdminPanel";
+import EventImagesAdminPanel from "./EventImagesAdminPanel";
 
 interface Exhibition {
   id: string;
@@ -21,7 +23,7 @@ interface ExhibitionWithImages extends Exhibition {
   images: string[];
 }
 
-type TabType = "exhibitions" | "news" | "carousel";
+type TabType = "exhibitions" | "news" | "carousel" | "events";
 
 export default function AdminPanel() {
   const router = useRouter();
@@ -350,12 +352,21 @@ export default function AdminPanel() {
       <div className="bg-[#495464] text-white py-4 px-6 shadow-md">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold">Админ Панел</h1>
-          <button
-            onClick={handleLogout}
-            className="bg-white text-[#495464] px-4 py-2 rounded hover:bg-gray-100 transition-colors"
-          >
-            Изход
-          </button>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              target="_blank"
+              className="bg-white text-[#495464] px-4 py-2 rounded hover:bg-gray-100 transition-colors"
+            >
+              Към уебсайта
+            </Link>
+            <button
+              onClick={handleLogout}
+              className="bg-white text-[#495464] px-4 py-2 rounded hover:bg-gray-100 transition-colors"
+            >
+              Изход
+            </button>
+          </div>
         </div>
       </div>
 
@@ -393,6 +404,16 @@ export default function AdminPanel() {
             >
               Карусела
             </button>
+            <button
+              onClick={() => setActiveTab("events")}
+              className={`px-6 py-3 font-medium transition-colors ${
+                activeTab === "events"
+                  ? "bg-white text-[#495464] border-b-2 border-[#495464]"
+                  : "text-[#495464]/70 hover:text-[#495464]"
+              }`}
+            >
+              Събития
+            </button>
           </div>
         </div>
       </div>
@@ -401,6 +422,8 @@ export default function AdminPanel() {
         <NewsAdminPanel />
       ) : activeTab === "carousel" ? (
         <CarouselAdminPanel />
+      ) : activeTab === "events" ? (
+        <EventImagesAdminPanel />
       ) : (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="mb-6">

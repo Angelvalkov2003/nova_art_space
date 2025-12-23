@@ -66,10 +66,7 @@ export default async function Novini() {
           <>
             {/* Главна новина */}
             {mainNews && (
-              <Link
-                href={`/novini/${mainNews.slug}`}
-                className="block mb-20 pb-16 border-b-2 border-[#E8E8E8] relative group cursor-pointer max-w-4xl"
-              >
+              <div className="mb-20 pb-16 border-b-2 border-[#E8E8E8] relative max-w-4xl">
                 <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
                 <div className="relative z-10">
                   <div className="mb-6">
@@ -80,7 +77,7 @@ export default async function Novini() {
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3 group-hover:text-[#3a4149] transition-colors">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3">
                     {mainNews.title}
                   </h2>
 
@@ -93,7 +90,7 @@ export default async function Novini() {
 
                   {/* Main Image */}
                   {mainNews.mainImage && (
-                    <div className="mb-4 rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity w-full max-w-md">
+                    <div className="mb-4 rounded-lg overflow-hidden w-full max-w-md">
                       <Image
                         src={mainNews.mainImage}
                         alt={mainNews.title}
@@ -103,8 +100,29 @@ export default async function Novini() {
                       />
                     </div>
                   )}
+
+                  {/* Button */}
+                  <Link
+                    href={`/novini/${mainNews.slug}`}
+                    className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                  >
+                    Виж повече
+                    <svg
+                      className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </Link>
                 </div>
-              </Link>
+              </div>
             )}
 
             {/* Други новини */}
@@ -119,17 +137,16 @@ export default async function Novini() {
 
                 <div className="space-y-16">
                   {otherNews.map((newsItem, idx) => (
-                    <Link
+                    <div
                       key={idx}
-                      href={`/novini/${newsItem.slug}`}
-                      className={`block ${
+                      className={`${
                         idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
-                      } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer max-w-4xl`}
+                      } border-[#E8E8E8] max-w-4xl`}
                     >
-                      <div className="flex flex-col md:flex-row gap-6">
+                      <div className="flex flex-col md:flex-row gap-6 mb-4">
                         {newsItem.mainImage && (
                           <div className="md:w-1/3 shrink-0">
-                            <div className="rounded-lg overflow-hidden group-hover:opacity-90 transition-opacity">
+                            <div className="rounded-lg overflow-hidden">
                               <Image
                                 src={newsItem.mainImage}
                                 alt={newsItem.title}
@@ -141,7 +158,7 @@ export default async function Novini() {
                           </div>
                         )}
                         <div className="flex-1">
-                          <h2 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2 group-hover:text-[#3a4149] transition-colors">
+                          <h2 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2">
                             {newsItem.title}
                           </h2>
                           {newsItem.subtitle && (
@@ -151,7 +168,27 @@ export default async function Novini() {
                           )}
                         </div>
                       </div>
-                    </Link>
+                      {/* Button */}
+                      <Link
+                        href={`/novini/${newsItem.slug}`}
+                        className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                      >
+                        Виж повече
+                        <svg
+                          className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import Navigation from "../../components/Navigation";
+import ScrollAnimation from "../../components/ScrollAnimation";
 import Link from "next/link";
 import { getNewsBySlug } from "../../lib/news";
 import { notFound } from "next/navigation";
@@ -71,9 +72,11 @@ export default async function NewsDetail({ params }: PageProps) {
         </h1>
 
         {newsItem.subtitle && (
-          <h2 className="text-2xl md:text-3xl text-[#495464]/90 mb-8 font-medium">
-            {newsItem.subtitle}
-          </h2>
+          <ScrollAnimation>
+            <h2 className="text-2xl md:text-3xl text-[#495464]/90 mb-8 font-medium">
+              {newsItem.subtitle}
+            </h2>
+          </ScrollAnimation>
         )}
 
         {/* Main Image */}
@@ -92,12 +95,11 @@ export default async function NewsDetail({ params }: PageProps) {
             {newsItem.text.split("\n").map(
               (paragraph, idx) =>
                 paragraph.trim() && (
-                  <p
-                    key={idx}
-                    className="text-lg text-[#495464]/80 leading-relaxed"
-                  >
-                    {paragraph.trim()}
-                  </p>
+                  <ScrollAnimation key={idx} delay={idx * 100}>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed">
+                      {paragraph.trim()}
+                    </p>
+                  </ScrollAnimation>
                 )
             )}
           </div>

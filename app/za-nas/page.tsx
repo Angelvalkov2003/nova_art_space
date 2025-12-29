@@ -1,6 +1,7 @@
 "use client";
 
 import Navigation from "../components/Navigation";
+import ScrollAnimation from "../components/ScrollAnimation";
 import Link from "next/link";
 import Image from "next/image";
 import ImageCarousel from "../components/ImageCarousel";
@@ -70,22 +71,26 @@ export default function ZaNas() {
                 изкуството.
               </h2>
               <div className="space-y-6">
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  nOva art space е съвременно културно пространство, изградено
-                  върху повече от две десетилетия традиция, професионализъм и
-                  отдаденост към изкуството. Разположена на престижния адрес ул.
-                  „Съборна" № 3, в самото сърце на София, галерията е сцена, на
-                  която класическото и съвременното изкуство живеят в нов,
-                  разширен контекст.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  След трансформацията си през 2025 г. пространството предлага
-                  над 400 кв.м модерна изложбена площ и над 100 метра
-                  експозиционни възможности, допълнени от професионално
-                  осветление, озвучаване, мултимедия и подиум сцена – създавайки
-                  условия за изложби, премиери, концерти, литературни формати и
-                  корпоративни събития на премиум ниво.
-                </p>
+                <ScrollAnimation>
+                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                    nOva art space е съвременно културно пространство, изградено
+                    върху повече от две десетилетия традиция, професионализъм и
+                    отдаденост към изкуството. Разположена на престижния адрес ул.
+                    „Съборна" № 3, в самото сърце на София, галерията е сцена, на
+                    която класическото и съвременното изкуство живеят в нов,
+                    разширен контекст.
+                  </p>
+                </ScrollAnimation>
+                <ScrollAnimation delay={100}>
+                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                    След трансформацията си през 2025 г. пространството предлага
+                    над 400 кв.м модерна изложбена площ и над 100 метра
+                    експозиционни възможности, допълнени от професионално
+                    осветление, озвучаване, мултимедия и подиум сцена – създавайки
+                    условия за изложби, премиери, концерти, литературни формати и
+                    корпоративни събития на премиум ниво.
+                  </p>
+                </ScrollAnimation>
               </div>
             </div>
 
@@ -110,31 +115,39 @@ export default function ZaNas() {
               История
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-            Нашата история
-          </h2>
-          <div className="bg-[#E8E8E8]/30 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
-            <p className="text-2xl text-[#495464] font-semibold">
-              Пет пространства. Две поколения. Една непрекъсната линия на
-              развитие.
-            </p>
-          </div>
+          <ScrollAnimation>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
+              Нашата история
+            </h2>
+          </ScrollAnimation>
+          <ScrollAnimation delay={100}>
+            <div className="bg-[#E8E8E8]/30 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
+              <p className="text-2xl text-[#495464] font-semibold">
+                Пет пространства. Две поколения. Една непрекъсната линия на
+                развитие.
+              </p>
+            </div>
+          </ScrollAnimation>
           <div className="space-y-6 text-lg text-[#495464]/80 leading-relaxed">
-            <p>
-              Историята на nOva art space започва през 1997 г., когато Ваня
-              Атанасова открива първото пространство – галерия „Жорж Папазов" в
-              Пловдив. Галерията бързо се превръща в емблематично място в
-              културния пейзаж на града и поставя основите на дългогодишна
-              традиция, посветена на изкуството.
-            </p>
-            <p>
-              През 2009 г. второто поколение продължава тази мисия. Спартак
-              Атанасов създава Арт център „Форум" на ул. „Георг Вашингтон" 24,
-              София – впечатляващо арт пространство в стил сецесион, включващо
-              осем зали, предназначени за мащабни изложби и културни събития.
-              Това е първият голям мост между артистичната среда на Пловдив и
-              столицата.
-            </p>
+            <ScrollAnimation delay={200}>
+              <p>
+                Историята на nOva art space започва през 1997 г., когато Ваня
+                Атанасова открива първото пространство – галерия „Жорж Папазов" в
+                Пловдив. Галерията бързо се превръща в емблематично място в
+                културния пейзаж на града и поставя основите на дългогодишна
+                традиция, посветена на изкуството.
+              </p>
+            </ScrollAnimation>
+            <ScrollAnimation delay={300}>
+              <p>
+                През 2009 г. второто поколение продължава тази мисия. Спартак
+                Атанасов създава Арт център „Форум" на ул. „Георг Вашингтон" 24,
+                София – впечатляващо арт пространство в стил сецесион, включващо
+                осем зали, предназначени за мащабни изложби и културни събития.
+                Това е първият голям мост между артистичната среда на Пловдив и
+                столицата.
+              </p>
+            </ScrollAnimation>
             {georgeWashingtonImages.length > 0 && (
               <div className="mt-6">
                 <ImageCarousel
@@ -143,12 +156,14 @@ export default function ZaNas() {
                 />
               </div>
             )}
-            <p>
-              Развитието продължава през 2014 г. с трето пространство – галерия
-              „Форум" на бул. „Васил Левски" 93, София, място, което бързо се
-              превръща в важен ориентир за колекционери, ценители и съвременни
-              автори.
-            </p>
+            <ScrollAnimation delay={400}>
+              <p>
+                Развитието продължава през 2014 г. с трето пространство – галерия
+                „Форум" на бул. „Васил Левски" 93, София, място, което бързо се
+                превръща в важен ориентир за колекционери, ценители и съвременни
+                автори.
+              </p>
+            </ScrollAnimation>
             {vasilLevskiImages.length > 0 && (
               <div className="mt-6">
                 <ImageCarousel
@@ -157,12 +172,14 @@ export default function ZaNas() {
                 />
               </div>
             )}
-            <p>
-              През 2019 г. се появява четвъртото пространство – nOva art space,
-              тогава вече с нова концепция: хипермодерна сцена за изложби,
-              концерти, театрални форми, премиери и разнообразни културни
-              формати, отговарящи на динамиката на съвременната публика.
-            </p>
+            <ScrollAnimation delay={500}>
+              <p>
+                През 2019 г. се появява четвъртото пространство – nOva art space,
+                тогава вече с нова концепция: хипермодерна сцена за изложби,
+                концерти, театрални форми, премиери и разнообразни културни
+                формати, отговарящи на динамиката на съвременната публика.
+              </p>
+            </ScrollAnimation>
             {novaArtSpaceImages.length > 0 && (
               <div className="mt-6">
                 <ImageCarousel
@@ -171,21 +188,25 @@ export default function ZaNas() {
                 />
               </div>
             )}
-            <p>
-              През 2025 г. галерията достига своя най-мащабен етап –
-              преместването и разширяването на ул. „Съборна" № 3, превръщайки се
-              в петото пространство от този дълъг и последователен път. Това е
-              най-голямото и технологично напреднало средище досега – създадено
-              да разказва истории чрез изкуство и да бъде дом на вдъхновяващи
-              културни преживявания.
-            </p>
-            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-[#E8E8E8] mt-6">
-              <p className="font-semibold text-[#495464] text-lg">
-                Две поколения, пет пространства и една непроменена мисия:
-                уважение към изкуството, професионално кураторство и желание да
-                се развива българската арт сцена.
+            <ScrollAnimation delay={600}>
+              <p>
+                През 2025 г. галерията достига своя най-мащабен етап –
+                преместването и разширяването на ул. „Съборна" № 3, превръщайки се
+                в петото пространство от този дълъг и последователен път. Това е
+                най-голямото и технологично напреднало средище досега – създадено
+                да разказва истории чрез изкуство и да бъде дом на вдъхновяващи
+                културни преживявания.
               </p>
-            </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={700}>
+              <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-[#E8E8E8] mt-6">
+                <p className="font-semibold text-[#495464] text-lg">
+                  Две поколения, пет пространства и една непроменена мисия:
+                  уважение към изкуството, професионално кураторство и желание да
+                  се развива българската арт сцена.
+                </p>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
 
@@ -204,66 +225,82 @@ export default function ZaNas() {
                 Мисия
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-              Нашата мисия
-            </h2>
-            <div className="bg-gradient-to-r from-[#9CA3AF] to-[#B0B8C4] rounded-xl p-6 md:p-8 mb-8 shadow-md">
-              <p className="text-2xl md:text-3xl text-white font-normal leading-relaxed italic" style={{ fontFamily: 'var(--font-dancing-script), cursive', fontStyle: 'italic' }}>
-                Да поддържаме жив диалога между традиция и съвременност.
+            <ScrollAnimation>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
+                Нашата мисия
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation delay={100}>
+              <div className="bg-gradient-to-r from-[#9CA3AF] to-[#B0B8C4] rounded-xl p-6 md:p-8 mb-8 shadow-md">
+                <p className="text-2xl md:text-3xl text-white font-normal leading-relaxed italic" style={{ fontFamily: 'var(--font-dancing-script), cursive', fontStyle: 'italic' }}>
+                  Да поддържаме жив диалога между традиция и съвременност.
+                </p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={200}>
+              <p className="text-lg text-[#495464]/80 leading-relaxed mb-8">
+                Мисията на nOva art space е да създава среда, в която изкуството има
+                силата да обединява хора, идеи и поколения. Стремим се да бъдем
+                пространство, в което:
               </p>
-            </div>
-            <p className="text-lg text-[#495464]/80 leading-relaxed mb-8">
-              Мисията на nOva art space е да създава среда, в която изкуството има
-              силата да обединява хора, идеи и поколения. Стремим се да бъдем
-              пространство, в което:
-            </p>
+            </ScrollAnimation>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
-                    утвърдени творци съжителстват с млади таланти;
-                  </p>
+              <ScrollAnimation delay={300}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
+                      утвърдени творци съжителстват с млади таланти;
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
-                    класическото наследство намира своята естествена връзка със
-                    съвременните форми;
-                  </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={350}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
+                      класическото наследство намира своята естествена връзка със
+                      съвременните форми;
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
-                    публиката не просто гледа, а преживява изкуството;
-                  </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={400}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
+                      публиката не просто гледа, а преживява изкуството;
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
-                    културата и бизнесът се срещат и създават стойност един за друг.
-                  </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={450}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#495464]/5 rounded-full -mr-16 -mt-16 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium">
+                      културата и бизнесът се срещат и създават стойност един за друг.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border-l-4 border-[#495464] shadow-md">
-              <p className="text-lg text-[#495464]/80 leading-relaxed">
-                В основата на нашата философия стои приемствеността – мостът между
-                традиция и новаторство. Затова галерията активно подкрепя нови
-                автори, организира професионални формати и предоставя сцена за
-                реализация, развитие и диалог.
-              </p>
-            </div>
+            <ScrollAnimation delay={500}>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border-l-4 border-[#495464] shadow-md">
+                <p className="text-lg text-[#495464]/80 leading-relaxed">
+                  В основата на нашата философия стои приемствеността – мостът между
+                  традиция и новаторство. Затова галерията активно подкрепя нови
+                  автори, организира професионални формати и предоставя сцена за
+                  реализация, развитие и диалог.
+                </p>
+              </div>
+            </ScrollAnimation>
           </div>
         </div>
 
@@ -282,48 +319,60 @@ export default function ZaNas() {
                 Днес
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-              Какво представлява nOva art space днес
-            </h2>
-            <div className="bg-gradient-to-r from-[#9CA3AF] to-[#B0B8C4] rounded-xl p-6 md:p-8 mb-8 shadow-md">
-              <p className="text-2xl md:text-3xl text-white font-normal leading-relaxed italic" style={{ fontFamily: 'var(--font-dancing-script), cursive', fontStyle: 'italic' }}>
-                Повече от галерия. Културно средище. Премиум пространство за
-                събития и изкуство.
+            <ScrollAnimation>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
+                Какво представлява nOva art space днес
+              </h2>
+            </ScrollAnimation>
+            <ScrollAnimation delay={100}>
+              <div className="bg-gradient-to-r from-[#9CA3AF] to-[#B0B8C4] rounded-xl p-6 md:p-8 mb-8 shadow-md">
+                <p className="text-2xl md:text-3xl text-white font-normal leading-relaxed italic" style={{ fontFamily: 'var(--font-dancing-script), cursive', fontStyle: 'italic' }}>
+                  Повече от галерия. Културно средище. Премиум пространство за
+                  събития и изкуство.
+                </p>
+              </div>
+            </ScrollAnimation>
+            <ScrollAnimation delay={200}>
+              <p className="text-lg text-[#495464]/80 leading-relaxed mb-8">
+                Днес nOva art space е динамична и гъвкава сцена, в която се
+                провеждат:
               </p>
-            </div>
-            <p className="text-lg text-[#495464]/80 leading-relaxed mb-8">
-              Днес nOva art space е динамична и гъвкава сцена, в която се
-              провеждат:
-            </p>
+            </ScrollAnimation>
             <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
-                    изложби на български класици и съвременни автори;
-                  </p>
+              <ScrollAnimation delay={300}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
+                      изложби на български класици и съвременни автори;
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
-                    литературни събития, камерни постановки и концерти;
-                  </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={350}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
+                      литературни събития, камерни постановки и концерти;
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
-                  <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
-                    корпоративни, модни, светски и частни събития, които използват
-                    силата на изкуството като премиум контекст.
-                  </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={400}>
+                <div className="group relative bg-white rounded-xl p-6 border-2 border-[#E8E8E8] hover:border-[#495464] transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                  <div className="absolute top-0 left-0 w-28 h-28 bg-[#495464]/5 rounded-full -ml-14 -mt-14 group-hover:bg-[#495464]/10 transition-all duration-500"></div>
+                  <div className="relative z-10">
+                    <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
+                    <p className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium">
+                      корпоративни, модни, светски и частни събития, които използват
+                      силата на изкуството като премиум контекст.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 border-l-4 border-[#495464] shadow-md">
               <p className="text-lg text-[#495464]/80 leading-relaxed">

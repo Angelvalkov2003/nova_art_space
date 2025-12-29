@@ -1,4 +1,5 @@
 import Navigation from "../../components/Navigation";
+import ScrollAnimation from "../../components/ScrollAnimation";
 import Link from "next/link";
 import { getNews } from "../../lib/news";
 import Image from "next/image";
@@ -57,13 +58,13 @@ export default async function VsiNovini() {
         ) : (
           <div className="space-y-16">
             {otherNews.map((newsItem, idx) => (
-              <Link
-                key={idx}
-                href={`/novini/${newsItem.slug}`}
-                className={`block ${
-                  idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
-                } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer max-w-4xl`}
-              >
+              <ScrollAnimation key={idx} delay={idx * 100}>
+                <Link
+                  href={`/novini/${newsItem.slug}`}
+                  className={`block ${
+                    idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
+                  } border-[#E8E8E8] hover:bg-[#E8E8E8]/30 transition-colors duration-300 rounded-lg p-6 -m-6 group cursor-pointer max-w-4xl`}
+                >
                 <div className="flex flex-col md:flex-row gap-6">
                   {newsItem.mainImage && (
                     <div className="md:w-1/3 shrink-0">
@@ -90,6 +91,7 @@ export default async function VsiNovini() {
                   </div>
                 </div>
               </Link>
+              </ScrollAnimation>
             ))}
           </div>
         )}

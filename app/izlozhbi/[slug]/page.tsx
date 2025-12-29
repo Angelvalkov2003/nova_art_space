@@ -1,4 +1,5 @@
 import Navigation from "../../components/Navigation";
+import ScrollAnimation from "../../components/ScrollAnimation";
 import Link from "next/link";
 import { IconCalendar, IconLocation, IconParty } from "../../components/Icons";
 import { getExhibitionBySlug } from "../../lib/exhibitions";
@@ -70,9 +71,11 @@ export default async function ExhibitionDetail({ params }: PageProps) {
             „{exhibition.title}"
           </h1>
           {exhibition.subtitle && (
-            <p className="text-2xl md:text-3xl text-[#495464]/50 mt-2">
-              {exhibition.subtitle}
-            </p>
+            <ScrollAnimation>
+              <p className="text-2xl md:text-3xl text-[#495464]/50 mt-2">
+                {exhibition.subtitle}
+              </p>
+            </ScrollAnimation>
           )}
         </div>
 
@@ -95,12 +98,11 @@ export default async function ExhibitionDetail({ params }: PageProps) {
             {exhibition.text.split("\n").map(
               (paragraph, idx) =>
                 paragraph.trim() && (
-                  <p
-                    key={idx}
-                    className="text-lg text-[#495464]/80 leading-relaxed"
-                  >
-                    {paragraph.trim()}
-                  </p>
+                  <ScrollAnimation key={idx} delay={idx * 100}>
+                    <p className="text-lg text-[#495464]/80 leading-relaxed">
+                      {paragraph.trim()}
+                    </p>
+                  </ScrollAnimation>
                 )
             )}
           </div>
@@ -110,29 +112,37 @@ export default async function ExhibitionDetail({ params }: PageProps) {
         <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
           <div className="space-y-2">
             {exhibition.date && (
-              <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
-                <IconCalendar className="w-5 h-5 text-[#495464]" />
-                {exhibition.date.includes("Изложбата")
-                  ? exhibition.date
-                  : `Датата на изложбата е ${exhibition.date}`}
-              </p>
+              <ScrollAnimation>
+                <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
+                  <IconCalendar className="w-5 h-5 text-[#495464]" />
+                  {exhibition.date.includes("Изложбата")
+                    ? exhibition.date
+                    : `Датата на изложбата е ${exhibition.date}`}
+                </p>
+              </ScrollAnimation>
             )}
-            <p className="text-base text-[#495464]/70 flex items-center gap-2">
-              <IconLocation className="w-5 h-5 text-[#495464]" />
-              Галерия nOva art space, ул. Съборна №3 (ниво -1)
-            </p>
+            <ScrollAnimation delay={100}>
+              <p className="text-base text-[#495464]/70 flex items-center gap-2">
+                <IconLocation className="w-5 h-5 text-[#495464]" />
+                Галерия nOva art space, ул. Съборна №3 (ниво -1)
+              </p>
+            </ScrollAnimation>
           </div>
         </div>
 
         {/* Author */}
         {exhibition.author && (
           <div className="mb-8">
-            <p className="text-sm font-semibold text-[#495464] mb-2">
-              {exhibition.author.includes(",") ? "Автори" : "Автор"}
-            </p>
-            <p className="text-lg text-[#495464]/80 italic border-l-2 border-[#BBBFCA] pl-4">
-              {exhibition.author}
-            </p>
+            <ScrollAnimation>
+              <p className="text-sm font-semibold text-[#495464] mb-2">
+                {exhibition.author.includes(",") ? "Автори" : "Автор"}
+              </p>
+            </ScrollAnimation>
+            <ScrollAnimation delay={100}>
+              <p className="text-lg text-[#495464]/80 italic border-l-2 border-[#BBBFCA] pl-4">
+                {exhibition.author}
+              </p>
+            </ScrollAnimation>
           </div>
         )}
 

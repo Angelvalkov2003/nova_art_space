@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation";
 import MainSlider from "./components/MainSlider";
 import AutoPlayVideo from "./components/AutoPlayVideo";
+import ScrollAnimation from "./components/ScrollAnimation";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -53,33 +54,45 @@ export default async function Home() {
                   За нас
                 </span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
-                Галерия с история на две поколения и поглед към бъдещето
-              </h2>
+              <ScrollAnimation>
+                <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6">
+                  Галерия с история на две поколения и поглед към бъдещето
+                </h2>
+              </ScrollAnimation>
               <div className="space-y-6 mb-8">
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  nOva art space е съвременна галерия и премиум пространство за
-                  събития, което съчетава изкуство, архитектура и бизнес визия.
-                </p>
-                <p className="text-lg text-[#495464]/80 leading-relaxed">
-                  Нашият фокус е върху стойностни произведения — от големите
-                  български майстори до силни съвременни автори — представени в
-                  среда, създадена за фокус, усещане и престиж.
-                </p>
+                <ScrollAnimation delay={100}>
+                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                    nOva art space е съвременна галерия и премиум пространство за
+                    събития, което съчетава изкуство, архитектура и бизнес визия.
+                  </p>
+                </ScrollAnimation>
+                <ScrollAnimation delay={200}>
+                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                    Нашият фокус е върху стойностни произведения — от големите
+                    български майстори до силни съвременни автори — представени в
+                    среда, създадена за фокус, усещане и престиж.
+                  </p>
+                </ScrollAnimation>
               </div>
               <div className="flex flex-wrap gap-4 mb-8">
-                <div className="flex items-center gap-2 text-[#495464]/70">
-                  <IconBuilding className="w-5 h-5 text-[#495464]" />
-                  <span className="text-sm">Пет пространства</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#495464]/70">
-                  <IconUsers className="w-5 h-5 text-[#495464]" />
-                  <span className="text-sm">Две поколения</span>
-                </div>
-                <div className="flex items-center gap-2 text-[#495464]/70">
-                  <IconPalette className="w-5 h-5 text-[#495464]" />
-                  <span className="text-sm">Една мисия</span>
-                </div>
+                <ScrollAnimation delay={300}>
+                  <div className="flex items-center gap-2 text-[#495464]/70">
+                    <IconBuilding className="w-5 h-5 text-[#495464]" />
+                    <span className="text-sm">Пет пространства</span>
+                  </div>
+                </ScrollAnimation>
+                <ScrollAnimation delay={400}>
+                  <div className="flex items-center gap-2 text-[#495464]/70">
+                    <IconUsers className="w-5 h-5 text-[#495464]" />
+                    <span className="text-sm">Две поколения</span>
+                  </div>
+                </ScrollAnimation>
+                <ScrollAnimation delay={500}>
+                  <div className="flex items-center gap-2 text-[#495464]/70">
+                    <IconPalette className="w-5 h-5 text-[#495464]" />
+                    <span className="text-sm">Една мисия</span>
+                  </div>
+                </ScrollAnimation>
               </div>
               <Link
                 href="/za-nas"
@@ -129,9 +142,11 @@ export default async function Home() {
                 „{currentExhibition.title}"
               </h2>
               {currentExhibition.subtitle && (
-                <p className="text-base md:text-lg text-[#495464]/60 mb-6 font-normal">
-                  {currentExhibition.subtitle}
-                </p>
+                <ScrollAnimation>
+                  <p className="text-base md:text-lg text-[#495464]/60 mb-6 font-normal">
+                    {currentExhibition.subtitle}
+                  </p>
+                </ScrollAnimation>
               )}
 
               {/* Main Image */}
@@ -149,21 +164,25 @@ export default async function Home() {
 
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
                 {currentExhibition.date && (
-                  <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
-                    <IconCalendar className="w-5 h-5 text-[#495464]" />
-                    {currentExhibition.date.includes("Изложбата")
-                      ? currentExhibition.date
-                      : `Изложбата ще се проведе ${currentExhibition.date}`}
-                  </p>
+                  <ScrollAnimation>
+                    <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
+                      <IconCalendar className="w-5 h-5 text-[#495464]" />
+                      {currentExhibition.date.includes("Изложбата")
+                        ? currentExhibition.date
+                        : `Изложбата ще се проведе ${currentExhibition.date}`}
+                    </p>
+                  </ScrollAnimation>
                 )}
               </div>
 
               {/* Author */}
               {currentExhibition.author && (
-                <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4">
-                  {currentExhibition.author.includes(",") ? "Автори" : "Автор"}:{" "}
-                  {currentExhibition.author}
-                </p>
+                <ScrollAnimation>
+                  <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4">
+                    {currentExhibition.author.includes(",") ? "Автори" : "Автор"}:{" "}
+                    {currentExhibition.author}
+                  </p>
+                </ScrollAnimation>
               )}
 
               <Link
@@ -204,10 +223,12 @@ export default async function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
               nOva art space – сцена за Вашите идеи
             </h2>
-            <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-8 font-medium leading-relaxed">
-              Пространство, създадено да издига всяка идея — с възможностите на
-              галерия и въздействието на премиум локация.
-            </h3>
+            <ScrollAnimation>
+              <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-8 font-medium leading-relaxed">
+                Пространство, създадено да издига всяка идея — с възможностите на
+                галерия и въздействието на премиум локация.
+              </h3>
+            </ScrollAnimation>
             <div className="mb-8 rounded-lg overflow-hidden">
               <Image
                 src="/zala1.jpg"
@@ -265,9 +286,11 @@ export default async function Home() {
                   {mainNews.title}
                 </h3>
                 {mainNews.subtitle && (
-                  <p className="text-lg text-[#495464]/70 mb-6">
-                    {mainNews.subtitle}
-                  </p>
+                  <ScrollAnimation>
+                    <p className="text-lg text-[#495464]/70 mb-6">
+                      {mainNews.subtitle}
+                    </p>
+                  </ScrollAnimation>
                 )}
                 {mainNews.mainImage && (
                   <div className="mb-6 rounded-lg overflow-hidden">

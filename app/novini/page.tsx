@@ -1,4 +1,5 @@
 import Navigation from "../components/Navigation";
+import ScrollAnimation from "../components/ScrollAnimation";
 import Link from "next/link";
 import { getNews } from "../lib/news";
 import Image from "next/image";
@@ -66,7 +67,8 @@ export default async function Novini() {
           <>
             {/* Главна новина */}
             {mainNews && (
-              <div className="mb-20 pb-16 border-b-2 border-[#E8E8E8] relative max-w-4xl">
+              <ScrollAnimation>
+                <div className="mb-20 pb-16 border-b-2 border-[#E8E8E8] relative max-w-4xl">
                 <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
                 <div className="relative z-10">
                   <div className="mb-6">
@@ -123,6 +125,7 @@ export default async function Novini() {
                   </Link>
                 </div>
               </div>
+              </ScrollAnimation>
             )}
 
             {/* Други новини */}
@@ -137,12 +140,12 @@ export default async function Novini() {
 
                 <div className="space-y-16">
                   {otherNews.map((newsItem, idx) => (
-                    <div
-                      key={idx}
-                      className={`${
-                        idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
-                      } border-[#E8E8E8] max-w-4xl`}
-                    >
+                    <ScrollAnimation key={idx} delay={idx * 100}>
+                      <div
+                        className={`${
+                          idx < otherNews.length - 1 ? "pb-12 border-b" : "pb-8"
+                        } border-[#E8E8E8] max-w-4xl`}
+                      >
                       <div className="flex flex-col md:flex-row gap-6 mb-4">
                         {newsItem.mainImage && (
                           <div className="md:w-1/3 shrink-0">
@@ -189,6 +192,7 @@ export default async function Novini() {
                         </svg>
                       </Link>
                     </div>
+                    </ScrollAnimation>
                   ))}
                 </div>
               </div>

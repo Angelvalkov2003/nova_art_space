@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import { useNewsGallery } from "./NewsGalleryContext";
+import { isYouTubeUrl, getYouTubeEmbedUrl } from "../lib/youtube";
 
 export default function NewsLightbox({ title }: { title: string }) {
   const {
@@ -130,20 +131,35 @@ export default function NewsLightbox({ title }: { title: string }) {
           </button>
         )}
 
-        {/* Image container */}
+        {/* Image/Video container */}
         <div
-          className="relative max-w-7xl max-h-[90vh] mx-4"
+          className={`relative max-w-9xl max-h-[97vh] ${
+            isYouTubeUrl(allImages[currentImageIndex]) ? "mx-0" : "mx-4"
+          }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <Image
-            src={allImages[currentImageIndex]}
-            alt={`${title} - Снимка ${currentImageIndex + 1}`}
-            width={1200}
-            height={800}
-            className="max-w-full max-h-[90vh] object-contain"
-            priority
-          />
-          {/* Image counter */}
+          {isYouTubeUrl(allImages[currentImageIndex]) ? (
+            <div className="w-[90vw] max-w-[1400px] aspect-video mx-auto">
+              <iframe
+                src={
+                  getYouTubeEmbedUrl(allImages[currentImageIndex], true) || ""
+                }
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          ) : (
+            <Image
+              src={allImages[currentImageIndex]}
+              alt={`${title} - Снимка ${currentImageIndex + 1}`}
+              width={1200}
+              height={800}
+              className="max-w-full max-h-[90vh] object-contain"
+              priority
+            />
+          )}
+          {/* Image/Video counter */}
           {allImages.length > 1 && (
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-lg text-sm">
               {currentImageIndex + 1} / {allImages.length}
@@ -154,4 +170,3 @@ export default function NewsLightbox({ title }: { title: string }) {
     </>
   );
 }
-

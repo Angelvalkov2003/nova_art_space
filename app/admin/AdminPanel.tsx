@@ -779,71 +779,104 @@ export default function AdminPanel() {
                     <div>
                       <div className="flex justify-between items-center mb-2">
                         <label className="block text-sm font-medium text-[#495464]">
-                          Снимки за галерията (неограничен брой)
+                          Снимки и видеа за галерията (неограничен брой)
                         </label>
-                        <button
-                          type="button"
-                          onClick={addImageField}
-                          className="text-sm bg-[#495464] text-white px-3 py-1 rounded hover:bg-[#3a4149] transition-colors"
-                        >
-                          + Добави снимка
-                        </button>
-                      </div>
-                      {formData.images.map((image, index) => (
-                        <div key={index} className="mb-4 space-y-2">
-                          <div className="flex gap-2">
-                            <input
-                              type="file"
-                              accept="image/*"
-                              onChange={(e) => {
-                                const file = e.target.files?.[0];
-                                if (file) {
-                                  handleFileUpload(
-                                    file,
-                                    `image_${index + 1}` as `image_${number}`
-                                  );
-                                }
-                              }}
-                              disabled={uploading === `image_${index + 1}`}
-                              className="flex-1 px-4 py-2 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464] disabled:opacity-50"
-                            />
-                            <button
-                              type="button"
-                              onClick={() => removeImageField(index)}
-                              className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
-                            >
-                              Премахни
-                            </button>
-                          </div>
-                          {uploading === `image_${index + 1}` && (
-                            <p className="text-sm text-[#495464]/70">
-                              Качване...
-                            </p>
-                          )}
-                          <input
-                            type="url"
-                            value={image}
-                            onChange={(e) =>
-                              handleImageChange(index, e.target.value)
-                            }
-                            placeholder={`Снимка ${
-                              index + 1
-                            } (URL или качи файл)`}
-                            className="w-full px-4 py-2 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464]"
-                          />
-                          {image && (
-                            <img
-                              src={image}
-                              alt={`Preview ${index + 1}`}
-                              className="w-full h-32 object-cover rounded-lg border border-[#E8E8E8]"
-                            />
-                          )}
+                        <div className="flex gap-2">
+                          <button
+                            type="button"
+                            onClick={addImageField}
+                            className="text-sm bg-[#495464] text-white px-3 py-1 rounded hover:bg-[#3a4149] transition-colors"
+                          >
+                            + Добави снимка
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setFormData({
+                                ...formData,
+                                images: [...formData.images, ""],
+                              });
+                            }}
+                            className="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors"
+                          >
+                            + Добави видео
+                          </button>
                         </div>
-                      ))}
+                      </div>
+                      {formData.images.map((image, index) => {
+                        const isYouTube = /youtube\.com|youtu\.be/.test(image);
+                        return (
+                          <div key={index} className="mb-4 space-y-2">
+                            <div className="flex gap-2">
+                              <input
+                                type="file"
+                                accept="image/*"
+                                onChange={(e) => {
+                                  const file = e.target.files?.[0];
+                                  if (file) {
+                                    handleFileUpload(
+                                      file,
+                                      `image_${index + 1}` as `image_${number}`
+                                    );
+                                  }
+                                }}
+                                disabled={uploading === `image_${index + 1}`}
+                                className="flex-1 px-4 py-2 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464] disabled:opacity-50"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => removeImageField(index)}
+                                className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
+                              >
+                                Премахни
+                              </button>
+                            </div>
+                            {uploading === `image_${index + 1}` && (
+                              <p className="text-sm text-[#495464]/70">
+                                Качване...
+                              </p>
+                            )}
+                            <input
+                              type="url"
+                              value={image}
+                              onChange={(e) =>
+                                handleImageChange(index, e.target.value)
+                              }
+                              placeholder={
+                                isYouTube
+                                  ? `Видео ${index + 1} (YouTube линк)`
+                                  : `Снимка ${index + 1} (URL или качи файл) или YouTube линк за видео`
+                              }
+                              className="w-full px-4 py-2 border border-[#E8E8E8] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#495464]"
+                            />
+                            {image && isYouTube && (
+                              <div className="w-full rounded-lg border border-[#E8E8E8] overflow-hidden">
+                                <div className="aspect-video bg-black flex items-center justify-center">
+                                  <iframe
+                                    src={`https://www.youtube.com/embed/${image.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^?&]+)/)?.[1] || ""}`}
+                                    className="w-full h-full"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                  />
+                                </div>
+                                <p className="text-xs text-[#495464]/70 p-2 bg-[#E8E8E8]/50">
+                                  YouTube видео
+                                </p>
+                              </div>
+                            )}
+                            {image && !isYouTube && (
+                              <img
+                                src={image}
+                                alt={`Preview ${index + 1}`}
+                                className="w-full h-32 object-cover rounded-lg border border-[#E8E8E8]"
+                              />
+                            )}
+                          </div>
+                        );
+                      })}
                       {formData.images.length === 0 && (
                         <p className="text-sm text-[#495464]/70">
-                          Няма добавени снимки. Натиснете "Добави снимка" за да
-                          добавите.
+                          Няма добавени снимки или видеа. Натиснете "Добави снимка" или "Добави видео" за да добавите.
                         </p>
                       )}
                     </div>

@@ -246,7 +246,7 @@ export default function MainSlider({ slides }: MainSliderProps) {
         ))}
       </div>
 
-      {/* Navigation Arrows - Hidden on mobile, shown on desktop */}
+      {/* Navigation Arrows - Visible on all devices */}
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -262,11 +262,11 @@ export default function MainSlider({ slides }: MainSliderProps) {
             startTimer();
           }
         }}
-        className="hidden md:flex absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
+        className="flex absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-2 md:p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
         aria-label="Previous slide"
       >
         <svg
-          className="w-6 h-6 transition-transform duration-300 group-hover:-translate-x-1"
+          className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:-translate-x-1"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -292,11 +292,11 @@ export default function MainSlider({ slides }: MainSliderProps) {
             startTimer();
           }
         }}
-        className="hidden md:flex absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
+        className="flex absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white text-[#495464] p-2 md:p-3 rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 group"
         aria-label="Next slide"
       >
         <svg
-          className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1"
+          className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:translate-x-1"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

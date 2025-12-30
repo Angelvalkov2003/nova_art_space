@@ -300,140 +300,92 @@ export default function Subitiya() {
             </h2>
           </ScrollAnimation>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <ScrollAnimation delay={100}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
-              <div className="relative z-10">
-                <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                  400 кв.м адаптивно пространство
-                </h3>
-                <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                  Гъвкава архитектура, която позволява изграждане на различни
-                  формати — от корпоративни срещи и коктейли до модни и PR
-                  събития. Пространството се персонализира спрямо концепцията на
-                  вашия бранд.
-                </p>
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                  <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
+                    400 кв.м адаптивно пространство
+                  </h3>
+                  <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                    Гъвкава архитектура, която позволява изграждане на различни формати — от корпоративни срещи и коктейли до модни и PR събития.
+                  </p>
+                </div>
               </div>
-            </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={150}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Високи тавани за премиум присъствие
+                  <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                  <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
+                    Професионален подиум / сцена
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Впечатляващ вертикален обем, който създава усещане за свобода,
-                    стил и престиж — идеална среда за събития, които искат да
-                    оставят следа.
+                  <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                    Изцяло оборудвана зона за презентации, модни ревюта, дискусии и специални акценти.
                   </p>
                 </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={200}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Професионален подиум / сцена
+                  <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                  <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
+                    Ескалаторен достъп
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Изцяло оборудвана зона за презентации, модни ревюта, дискусии и
-                    специални акценти. Сцената е проектирана да поставя фокуса там,
-                    където трябва да бъде — върху вашето послание.
+                  <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                    Уникален елемент, който предлага запомнящо се влизане и максимално удобство.
                   </p>
                 </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={250}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Ескалаторен достъп
+                  <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                  <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
+                    Професионално озвучаване и мултимедия
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Уникален елемент, който предлага запомнящо се влизане и
-                    максимално удобство. Детайл, който подсилва усещането за премиум
-                    пространство още от първата секунда.
+                  <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                    Висококачествена аудио система с микрофони и тонколони. Екрани 75" и 55" за визуална идентичност и дигитални акценти.
                   </p>
                 </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={300}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Професионално озвучаване
+                  <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                  <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
+                    Галерийно осветление
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Висококачествена аудио система с професионални микрофони,
-                    тонколони и аудио пулт, гарантиращи кристален и равномерен звук
-                    за всякакъв тип формати — реч, музика, лайв изпълнения.
+                  <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                    Професионално светлинно оформление, което подчертава детайла и създава отлична атмосфера за фото и видео.
                   </p>
                 </div>
               </div>
             </ScrollAnimation>
 
             <ScrollAnimation delay={350}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Мултимедийна техника и брандинг решения
-                  </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Екрани 75" и 55", възможности за визуална идентичност и
-                    дигитални акценти. Подходящо за презентации, премиери,
-                    продуктови активации и корпоративни събития.
-                  </p>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={400}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
-                <div className="relative z-10">
-                  <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
-                    Галерийно осветление
-                  </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                    Професионално светлинно оформление, което подчертава детайла и
-                    създава отлична атмосфера за фото, видео и premium имидж
-                    комуникация.
-                  </p>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={450}>
-              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="group relative bg-gradient-to-br from-white to-[#E8E8E8]/30 rounded-xl p-5 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 cursor-pointer overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
               <div className="relative z-10">
-                <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                <div className="w-10 h-1 bg-[#495464] mb-4 group-hover:w-14 transition-all duration-300"></div>
+                <h3 className="text-lg font-bold text-[#495464] mb-3 group-hover:text-[#495464] transition-colors">
                   Депо / Backstage зона
                 </h3>
-                <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
-                  Функционално оборудвана бекстейдж площ за подготовка на
-                  участници, екип и логистика — идеална за модни ревюта,
-                  артистични формати и корпоративни събития със сложна
-                  организация.
+                <p className="text-base text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  Функционално оборудвана бекстейдж площ за подготовка на участници, екип и логистика.
                 </p>
               </div>
             </div>

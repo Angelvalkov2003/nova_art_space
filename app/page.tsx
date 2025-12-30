@@ -25,6 +25,10 @@ import { getNews } from "./lib/news";
 import { getCarouselSlides } from "./lib/carousel";
 import { getCarouselMobileSlides } from "./lib/carousel_mobile";
 
+// Force dynamic rendering to always fetch fresh data (no caching)
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export default async function Home() {
   // Fetch current exhibition (position 0)
   const exhibitions = await getExhibitions();

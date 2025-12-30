@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export interface CarouselSlide {
   id: string;
@@ -10,6 +11,7 @@ export interface CarouselSlide {
 }
 
 export async function getCarouselSlides(): Promise<CarouselSlide[]> {
+  noStore(); // Disable caching for this function
   try {
     const { data, error } = await supabase
       .from('carousel_slides')

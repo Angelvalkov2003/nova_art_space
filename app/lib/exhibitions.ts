@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export interface Exhibition {
   title: string;
@@ -43,6 +44,7 @@ function generateAutoSlug(): string {
 }
 
 export async function getExhibitions(): Promise<Exhibition[]> {
+  noStore(); // Disable caching for this function
   try {
     // Fetch exhibitions from Supabase (always fresh, no cache)
     const { data: exhibitionsData, error: exhibitionsError } = await supabase
@@ -118,6 +120,7 @@ export async function getExhibitions(): Promise<Exhibition[]> {
 
 // Get single exhibition by slug
 export async function getExhibitionBySlug(slug: string): Promise<Exhibition | null> {
+  noStore(); // Disable caching for this function
   try {
     // Fetch exhibition by slug
     const { data: exhibitionData, error: exhibitionError } = await supabase
@@ -160,6 +163,7 @@ export async function getExhibitionBySlug(slug: string): Promise<Exhibition | nu
     return null;
   }
 }
+
 
 
 

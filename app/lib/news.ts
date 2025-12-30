@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { unstable_noStore as noStore } from 'next/cache';
 
 export interface News {
   title: string;
@@ -41,6 +42,7 @@ function generateAutoSlug(): string {
 }
 
 export async function getNews(): Promise<News[]> {
+  noStore(); // Disable caching for this function
   try {
     // Fetch news from Supabase (always fresh, no cache)
     // Filter out archived news (position 1000)
@@ -116,6 +118,7 @@ export async function getNews(): Promise<News[]> {
 
 // Get single news by slug
 export async function getNewsBySlug(slug: string): Promise<News | null> {
+  noStore(); // Disable caching for this function
   try {
     // Fetch news by slug
     const { data: newsData, error: newsError } = await supabase

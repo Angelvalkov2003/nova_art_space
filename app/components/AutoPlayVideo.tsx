@@ -13,6 +13,8 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
   const hasUserInteractedRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const userControlledPlayPauseRef = useRef(false);
+  const userControlledMuteRef = useRef(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,13 +43,17 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
         setHasUserInteracted(true);
       }
       
-      // If video is in viewport, play it with sound
+      // If video is in viewport and user hasn't manually controlled mute/play
       const rect = video.getBoundingClientRect();
       const isInViewport = rect.top < window.innerHeight && rect.bottom > 0;
       
       if (isInViewport && hasUserInteractedRef.current) {
-        video.muted = false;
-        if (video.paused) {
+        // Only unmute if user hasn't manually controlled mute
+        if (!userControlledMuteRef.current) {
+          video.muted = false;
+        }
+        // Only play if user hasn't manually paused
+        if (video.paused && !userControlledPlayPauseRef.current) {
           video.play().catch((error) => {
             console.log("Video play with sound failed:", error);
           });
@@ -74,23 +80,31 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             // Video entered viewport
-            // If user has interacted (scrolled), play with sound
-            // Otherwise play muted
-            video.muted = !hasUserInteractedRef.current;
+            // Only auto-control if user hasn't manually controlled
+            if (!userControlledMuteRef.current) {
+              // If user has interacted (scrolled), play with sound
+              // Otherwise play muted
+              video.muted = !hasUserInteractedRef.current;
+            }
             
-            video.play().catch((error) => {
-              console.log("Video play failed:", error);
-              // If play failed and user hasn't interacted, try muted
-              if (!hasUserInteractedRef.current) {
-                video.muted = true;
-                video.play().catch(() => {
-                  console.log("Muted play also failed");
-                });
-              }
-            });
+            // Only auto-play if user hasn't manually paused
+            if (!userControlledPlayPauseRef.current) {
+              video.play().catch((error) => {
+                console.log("Video play failed:", error);
+                // If play failed and user hasn't interacted, try muted
+                if (!hasUserInteractedRef.current && !userControlledMuteRef.current) {
+                  video.muted = true;
+                  video.play().catch(() => {
+                    console.log("Muted play also failed");
+                  });
+                }
+              });
+            }
           } else {
-            // Video left viewport - pause it
-            video.pause();
+            // Video left viewport - pause it only if user hasn't manually controlled
+            if (!userControlledPlayPauseRef.current) {
+              video.pause();
+            }
           }
         });
       },
@@ -110,10 +124,10 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
     };
   }, []);
 
-  // Unmute video when user has interacted
+  // Unmute video when user has interacted (only if user hasn't manually controlled mute)
   useEffect(() => {
     const video = videoRef.current;
-    if (video && hasUserInteracted) {
+    if (video && hasUserInteracted && !userControlledMuteRef.current) {
       video.muted = false;
       setIsMuted(false);
     }
@@ -147,6 +161,9 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    // Mark that user has manually controlled play/pause
+    userControlledPlayPauseRef.current = true;
+
     if (video.paused) {
       video.play().catch((error) => {
         console.log("Video play failed:", error);
@@ -159,6 +176,9 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
   const toggleMute = () => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Mark that user has manually controlled mute
+    userControlledMuteRef.current = true;
 
     video.muted = !video.muted;
     setIsMuted(video.muted);

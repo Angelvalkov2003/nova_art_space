@@ -23,8 +23,8 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
     // Try to play video immediately when it loads (muted by default)
     const tryAutoPlay = () => {
       video.muted = true; // Start muted to allow autoplay
-      video.play().catch((error) => {
-        console.log("Initial autoplay failed, will try when in viewport:", error);
+      video.play().catch(() => {
+        // Autoplay failed, will try when in viewport
       });
     };
 
@@ -54,8 +54,8 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
         }
         // Only play if user hasn't manually paused
         if (video.paused && !userControlledPlayPauseRef.current) {
-          video.play().catch((error) => {
-            console.log("Video play with sound failed:", error);
+          video.play().catch(() => {
+            // Video play with sound failed
           });
         }
       }
@@ -89,13 +89,12 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
             
             // Only auto-play if user hasn't manually paused
             if (!userControlledPlayPauseRef.current) {
-              video.play().catch((error) => {
-                console.log("Video play failed:", error);
+              video.play().catch(() => {
                 // If play failed and user hasn't interacted, try muted
                 if (!hasUserInteractedRef.current && !userControlledMuteRef.current) {
                   video.muted = true;
                   video.play().catch(() => {
-                    console.log("Muted play also failed");
+                    // Muted play also failed
                   });
                 }
               });
@@ -165,8 +164,8 @@ export default function AutoPlayVideo({ src, className }: AutoPlayVideoProps) {
     userControlledPlayPauseRef.current = true;
 
     if (video.paused) {
-      video.play().catch((error) => {
-        console.log("Video play failed:", error);
+      video.play().catch(() => {
+        // Video play failed
       });
     } else {
       video.pause();

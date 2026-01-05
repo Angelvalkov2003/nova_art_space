@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Dancing_Script } from "next/font/google";
+import { Inter, Dancing_Script, Montserrat, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import CookieYes from "./components/CookieYes";
@@ -14,6 +14,16 @@ const inter = Inter({
 const dancingScript = Dancing_Script({
   subsets: ["latin"],
   variable: "--font-dancing-script",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-montserrat",
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-playfair",
 });
 
 export const metadata: Metadata = {
@@ -154,7 +164,7 @@ export default function RootLayout({
   return (
     <html lang="bg">
       <body
-        className={`${inter.variable} ${dancingScript.variable} antialiased`}
+        className={`${inter.variable} ${dancingScript.variable} ${montserrat.variable} ${playfairDisplay.variable} antialiased`}
       >
         <Script
           id="structured-data"

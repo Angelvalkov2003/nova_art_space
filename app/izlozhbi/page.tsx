@@ -27,6 +27,7 @@ export default async function Izlozhbi() {
         <Link
           href="/"
           className="inline-flex items-center gap-2 mb-8 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 group"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
@@ -46,11 +47,11 @@ export default async function Izlozhbi() {
 
         <div className="flex items-center gap-3 mb-8">
           <span className="w-12 h-0.5 bg-[#495464]"></span>
-          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-playfair), serif" }}>
             Изложби
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-12">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-12" style={{ fontFamily: "var(--font-playfair), serif" }}>
           Изложби
         </h1>
 
@@ -61,20 +62,20 @@ export default async function Izlozhbi() {
             <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
             <div className="relative z-10">
               <div className="mb-6">
-                <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+                <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md" style={{ fontFamily: "var(--font-playfair), serif" }}>
                   <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                   Настояща
                 </span>
               </div>
 
               {/* Title */}
-              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 {currentExhibition.title}
               </h2>
 
               {/* Subtitle */}
               {currentExhibition.subtitle && (
-                <p className="text-lg text-[#495464]/70 mb-6">
+                <p className="text-lg text-[#495464]/70 mb-6" style={{ fontFamily: "var(--font-playfair), serif" }}>
                   {currentExhibition.subtitle}
                 </p>
               )}
@@ -95,12 +96,12 @@ export default async function Izlozhbi() {
               {/* Author and Date */}
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md mb-4">
                 {currentExhibition.author && (
-                  <p className="text-base">Автор: {currentExhibition.author}</p>
+                  <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>Автор: {currentExhibition.author}</p>
                 )}
                 {currentExhibition.date && (
                   <div className="flex items-center gap-2">
                     <IconCalendar className="w-5 h-5 text-[#495464]" />
-                    <p className="text-base">{currentExhibition.date}</p>
+                    <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>{currentExhibition.date}</p>
                   </div>
                 )}
               </div>
@@ -109,6 +110,7 @@ export default async function Izlozhbi() {
               <Link
                 href={`/izlozhbi/${currentExhibition.slug}`}
                 className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Виж повече за изложбата
                 <svg
@@ -135,11 +137,11 @@ export default async function Izlozhbi() {
           <div>
             <div className="flex items-center gap-3 mb-8">
               <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 История
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-12" style={{ fontFamily: "var(--font-playfair), serif" }}>
               Минали изложби
             </h2>
 
@@ -152,13 +154,13 @@ export default async function Izlozhbi() {
                     } border-[#E8E8E8] max-w-4xl`}
                   >
                   {/* Title */}
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2">
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2" style={{ fontFamily: "var(--font-playfair), serif" }}>
                     {exhibition.title}
                   </h3>
 
                   {/* Subtitle */}
                   {exhibition.subtitle && (
-                    <p className="text-base text-[#495464]/70 mb-4">
+                    <p className="text-base text-[#495464]/70 mb-4" style={{ fontFamily: "var(--font-playfair), serif" }}>
                       {exhibition.subtitle}
                     </p>
                   )}
@@ -179,12 +181,12 @@ export default async function Izlozhbi() {
                   {/* Author and Date */}
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md mb-4">
                     {exhibition.author && (
-                      <p className="text-base">Автор: {exhibition.author}</p>
+                      <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>Автор: {exhibition.author}</p>
                     )}
                     {exhibition.date && (
                       <div className="flex items-center gap-2">
                         <IconCalendar className="w-5 h-5 text-[#495464]" />
-                        <p className="text-base">{exhibition.date}</p>
+                        <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>{exhibition.date}</p>
                       </div>
                     )}
                   </div>
@@ -193,6 +195,7 @@ export default async function Izlozhbi() {
                   <Link
                     href={`/izlozhbi/${exhibition.slug}`}
                     className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     Виж повече за изложбата
                     <svg
@@ -219,7 +222,7 @@ export default async function Izlozhbi() {
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/80 text-sm">
+          <p className="text-white/80 text-sm" style={{ fontFamily: "var(--font-playfair), serif" }}>
             © {new Date().getFullYear()} nOva art space. Всички права запазени.
           </p>
         </div>

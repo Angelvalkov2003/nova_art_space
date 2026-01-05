@@ -176,17 +176,26 @@ export default function Subitiya() {
 
         <div className="flex items-center gap-3 mb-6">
           <span className="w-12 h-0.5 bg-[#495464]"></span>
-          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+          <span
+            className="text-sm font-semibold text-[#495464] uppercase tracking-wider"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
             Събития
           </span>
         </div>
         <ScrollAnimation>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6">
+          <h1
+            className="text-4xl md:text-5xl font-bold text-[#495464] mb-6"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
             nOva art space – сцена за Вашите идеи
           </h1>
         </ScrollAnimation>
         <ScrollAnimation delay={100}>
-          <h2 className="text-2xl md:text-3xl text-[#495464]/90 mb-12 font-medium leading-relaxed">
+          <h2
+            className="text-2xl md:text-3xl text-[#495464]/90 mb-12 font-medium leading-relaxed"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
             Пространство, създадено да издига всяка идея — с възможностите на
             галерия и въздействието на премиум локация.
           </h2>
@@ -196,7 +205,10 @@ export default function Subitiya() {
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-12 h-0.5 bg-[#495464]"></span>
-            <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+            <span
+              className="text-sm font-semibold text-[#495464] uppercase tracking-wider"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Галерия
             </span>
           </div>
@@ -296,12 +308,18 @@ export default function Subitiya() {
         <div className="mb-20">
           <div className="flex items-center gap-3 mb-8">
             <span className="w-12 h-0.5 bg-[#495464]"></span>
-            <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+            <span
+              className="text-sm font-semibold text-[#495464] uppercase tracking-wider"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Услуги
             </span>
           </div>
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-12">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-12"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Какво предлагаме
             </h2>
           </ScrollAnimation>
@@ -312,10 +330,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     400 кв.м адаптивно пространство
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Гъвкава архитектура, която позволява изграждане на различни
                     формати — от корпоративни срещи и коктейли до модни и PR
                     събития. Пространството се персонализира спрямо концепцията
@@ -330,10 +354,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Високи тавани за премиум присъствие
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Впечатляващ вертикален обем, който създава усещане за
                     свобода, стил и престиж — идеална среда за събития, които
                     искат да оставят следа.
@@ -347,10 +377,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Професионален подиум / сцена
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Изцяло оборудвана зона за презентации, модни ревюта,
                     дискусии и специални акценти. Сцената е проектирана да
                     поставя фокуса там, където трябва да бъде — върху вашето
@@ -365,10 +401,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Ескалаторен достъп
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Уникален елемент, който предлага запомнящо се влизане и
                     максимално удобство. Детайл, който подсилва усещането за
                     премиум пространство още от първата секунда.
@@ -382,10 +424,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Професионално озвучаване
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Висококачествена аудио система с професионални микрофони,
                     тонколони и аудио пулт, гарантиращи кристален и равномерен
                     звук за всякакъв тип формати — реч, музика, лайв изпълнения.
@@ -399,10 +447,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Мултимедийна техника и брандинг решения
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Екрани 75" и 55", възможности за визуална идентичност и
                     дигитални акценти. Подходящо за презентации, премиери,
                     продуктови активации и корпоративни събития.
@@ -416,10 +470,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Галерийно осветление
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Професионално светлинно оформление, което подчертава детайла
                     и създава отлична атмосфера за фото, видео и premium имидж
                     комуникация.
@@ -433,10 +493,16 @@ export default function Subitiya() {
                 <div className="absolute inset-0 bg-gradient-to-br from-[#495464]/0 to-[#495464]/0 group-hover:from-[#495464]/5 group-hover:to-[#495464]/10 transition-all duration-500"></div>
                 <div className="relative z-10">
                   <div className="w-12 h-1 bg-[#495464] mb-6 group-hover:w-16 transition-all duration-300"></div>
-                  <h3 className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors">
+                  <h3
+                    className="text-xl font-bold text-[#495464] mb-4 group-hover:text-[#495464] transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Депо / Backstage зона
                   </h3>
-                  <p className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors">
+                  <p
+                    className="text-[#495464]/80 leading-relaxed group-hover:text-[#495464]/90 transition-colors"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
+                  >
                     Функционално оборудвана бекстейдж площ за подготовка на
                     участници, екип и логистика — идеална за модни ревюта,
                     артистични формати и корпоративни събития със сложна
@@ -452,12 +518,18 @@ export default function Subitiya() {
         <div className="mb-16">
           <div className="flex items-center gap-3 mb-6">
             <span className="w-12 h-0.5 bg-[#495464]"></span>
-            <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+            <span
+              className="text-sm font-semibold text-[#495464] uppercase tracking-wider"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Формати
             </span>
           </div>
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-12">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-12"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Подходящо за:
             </h2>
           </ScrollAnimation>
@@ -465,7 +537,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={100}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   Изложби
                 </p>
               </div>
@@ -473,7 +548,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={150}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   Корпоративни срещи и презентации
                 </p>
               </div>
@@ -481,7 +559,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={200}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   PR и медийни събития
                 </p>
               </div>
@@ -489,7 +570,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={250}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   Модни формати и продуктови премиери
                 </p>
               </div>
@@ -497,7 +581,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={300}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   Частни коктейли и специални поводи
                 </p>
               </div>
@@ -505,7 +592,10 @@ export default function Subitiya() {
             <ScrollAnimation delay={350}>
               <div className="group relative bg-white rounded-xl p-6 border border-[#E8E8E8] hover:border-[#495464]/30 transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#495464]/0 via-[#495464]/50 to-[#495464]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <p className="text-lg font-medium text-[#495464] leading-relaxed">
+                <p
+                  className="text-lg font-medium text-[#495464] leading-relaxed"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   Ексклузивни бизнес срещи и networking събития
                 </p>
               </div>
@@ -516,7 +606,10 @@ export default function Subitiya() {
         {/* Общо послание */}
         <ScrollAnimation>
           <div className="mb-12 bg-white/60 backdrop-blur-sm rounded-lg p-8 border-l-4 border-[#495464]">
-            <p className="text-xl text-[#495464] leading-relaxed italic">
+            <p
+              className="text-xl text-[#495464] leading-relaxed italic"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               В nOva art space пространството не е просто фон — то е активен
               елемент, който оформя впечатление, стил и стойност. Вашето събитие
               става изживяване, което гостите помнят.
@@ -529,6 +622,7 @@ export default function Subitiya() {
           <Link
             href="/kontakti#zapitvane"
             className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Изпрати запитване
             <svg
@@ -550,7 +644,10 @@ export default function Subitiya() {
         {/* Concert Gallery Section */}
         <div id="koncert" className="mb-16 scroll-mt-24">
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-8"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Концертни събития
             </h2>
           </ScrollAnimation>
@@ -576,6 +673,7 @@ export default function Subitiya() {
               <button
                 onClick={() => openEventImagesLightbox("koncert")}
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Виж още снимки
                 <svg
@@ -599,7 +697,10 @@ export default function Subitiya() {
         {/* Cocktail Gallery Section */}
         <div id="kokteil" className="mb-16 scroll-mt-24">
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-8"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Коктейлни събития
             </h2>
           </ScrollAnimation>
@@ -625,6 +726,7 @@ export default function Subitiya() {
               <button
                 onClick={() => openEventImagesLightbox("kokteil")}
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Виж още снимки
                 <svg
@@ -648,7 +750,10 @@ export default function Subitiya() {
         {/* Seminar Gallery Section */}
         <div id="seminar" className="mb-16 scroll-mt-24">
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-8"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Семинарни събития
             </h2>
           </ScrollAnimation>
@@ -674,6 +779,7 @@ export default function Subitiya() {
               <button
                 onClick={() => openEventImagesLightbox("seminar")}
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Виж още снимки
                 <svg
@@ -697,7 +803,10 @@ export default function Subitiya() {
         {/* Product Gallery Section */}
         <div id="produkt" className="mb-16 scroll-mt-24">
           <ScrollAnimation>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+            <h2
+              className="text-3xl md:text-4xl font-bold text-[#495464] mb-8"
+              style={{ fontFamily: "var(--font-playfair), serif" }}
+            >
               Продуктови събития
             </h2>
           </ScrollAnimation>
@@ -723,6 +832,7 @@ export default function Subitiya() {
               <button
                 onClick={() => openEventImagesLightbox("produkt")}
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-6 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
               >
                 Виж още снимки
                 <svg
@@ -840,7 +950,10 @@ export default function Subitiya() {
               />
               {/* Image counter */}
               {currentImages.length > 1 && (
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-lg text-sm">
+                <div
+                  className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-lg text-sm"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
+                >
                   {currentImageIndex + 1} / {currentImages.length}
                 </div>
               )}
@@ -851,7 +964,10 @@ export default function Subitiya() {
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/80 text-sm">
+          <p
+            className="text-white/80 text-sm"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
             © {new Date().getFullYear()} nOva art space. Всички права запазени.
           </p>
         </div>

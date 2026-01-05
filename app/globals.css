@@ -15,6 +15,8 @@
   --color-accent-medium: var(--accent-medium);
   --color-accent-dark: var(--accent-dark);
   --font-sans: var(--font-inter);
+  --font-montserrat: var(--font-montserrat);
+  --font-playfair: var(--font-playfair);
 }
 
 html {

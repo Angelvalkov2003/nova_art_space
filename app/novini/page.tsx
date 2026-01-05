@@ -23,6 +23,7 @@ export default async function Novini() {
         <Link
           href="/"
           className="inline-flex items-center gap-2 mb-8 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 group"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
@@ -42,24 +43,24 @@ export default async function Novini() {
 
         <div className="flex items-center gap-3 mb-6">
           <span className="w-12 h-0.5 bg-[#495464]"></span>
-          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-playfair), serif" }}>
             Новини
           </span>
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-6" style={{ fontFamily: "var(--font-playfair), serif" }}>
           Новини и акценти
         </h1>
-        <p className="text-xl text-[#495464]/80 mb-4 leading-relaxed">
+        <p className="text-xl text-[#495464]/80 mb-4 leading-relaxed" style={{ fontFamily: "var(--font-playfair), serif" }}>
           Следете последните изложби, събития и инициативи на nOva art space.
         </p>
-        <p className="text-xl text-[#495464]/80 mb-12 leading-relaxed">
+        <p className="text-xl text-[#495464]/80 mb-12 leading-relaxed" style={{ fontFamily: "var(--font-playfair), serif" }}>
           Тук споделяме моменти, които оформят нашата културна и професионална
           динамика.
         </p>
 
         {news.length === 0 ? (
           <div className="text-center py-16">
-            <p className="text-lg text-[#495464]/70">
+            <p className="text-lg text-[#495464]/70" style={{ fontFamily: "var(--font-playfair), serif" }}>
               Все още няма публикувани новини.
             </p>
           </div>
@@ -72,20 +73,20 @@ export default async function Novini() {
                 <div className="absolute top-0 left-0 w-64 h-64 bg-[#E8E8E8] rounded-full blur-3xl opacity-20 -ml-32 -mt-32"></div>
                 <div className="relative z-10">
                   <div className="mb-6">
-                    <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+                    <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md" style={{ fontFamily: "var(--font-playfair), serif" }}>
                       <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                       Главна новина
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3">
+                  <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-3" style={{ fontFamily: "var(--font-playfair), serif" }}>
                     {mainNews.title}
                   </h2>
 
                   {/* Subtitle */}
                   {mainNews.subtitle && (
-                    <p className="text-lg text-[#495464]/70 mb-6">
+                    <p className="text-lg text-[#495464]/70 mb-6" style={{ fontFamily: "var(--font-playfair), serif" }}>
                       {mainNews.subtitle}
                     </p>
                   )}
@@ -107,6 +108,7 @@ export default async function Novini() {
                   <Link
                     href={`/novini/${mainNews.slug}`}
                     className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     Виж повече
                     <svg
@@ -133,7 +135,7 @@ export default async function Novini() {
               <div>
                 <div className="flex items-center gap-3 mb-8">
                   <span className="w-12 h-0.5 bg-[#495464]"></span>
-                  <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                  <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-playfair), serif" }}>
                     Други новини
                   </span>
                 </div>
@@ -161,11 +163,11 @@ export default async function Novini() {
                           </div>
                         )}
                         <div className="flex-1">
-                          <h2 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2">
+                          <h2 className="text-2xl md:text-3xl font-bold text-[#495464] mb-2" style={{ fontFamily: "var(--font-playfair), serif" }}>
                             {newsItem.title}
                           </h2>
                           {newsItem.subtitle && (
-                            <h3 className="text-lg md:text-xl text-[#495464]/70 mb-4 font-medium">
+                            <h3 className="text-lg md:text-xl text-[#495464]/70 mb-4 font-medium" style={{ fontFamily: "var(--font-playfair), serif" }}>
                               {newsItem.subtitle}
                             </h3>
                           )}
@@ -175,6 +177,7 @@ export default async function Novini() {
                       <Link
                         href={`/novini/${newsItem.slug}`}
                         className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group"
+                        style={{ fontFamily: "var(--font-playfair), serif" }}
                       >
                         Виж повече
                         <svg
@@ -203,7 +206,7 @@ export default async function Novini() {
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/80 text-sm">
+          <p className="text-white/80 text-sm" style={{ fontFamily: "var(--font-playfair), serif" }}>
             © {new Date().getFullYear()} nOva art space. Всички права запазени.
           </p>
         </div>

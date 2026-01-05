@@ -81,24 +81,24 @@ export default async function Home() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-12 h-0.5 bg-[#495464]"></span>
-                <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                   За нас
                 </span>
               </div>
               <ScrollAnimation>
-                <h1 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6" itemProp="headline">
+                <h1 className="text-3xl md:text-4xl font-bold text-[#495464] mb-6" itemProp="headline" style={{ fontFamily: "var(--font-playfair), serif" }}>
                   Галерия с история на две поколения и поглед към бъдещето
                 </h1>
               </ScrollAnimation>
               <div className="space-y-6 mb-8">
                 <ScrollAnimation delay={100}>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                  <p className="text-lg text-[#495464]/80 leading-relaxed" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     nOva art space е съвременна галерия и премиум пространство за
                     събития, което съчетава изкуство, архитектура и бизнес визия.
                   </p>
                 </ScrollAnimation>
                 <ScrollAnimation delay={200}>
-                  <p className="text-lg text-[#495464]/80 leading-relaxed">
+                  <p className="text-lg text-[#495464]/80 leading-relaxed" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     Нашият фокус е върху стойностни произведения — от големите
                     български майстори до силни съвременни автори — представени в
                     среда, създадена за фокус, усещане и престиж.
@@ -109,25 +109,26 @@ export default async function Home() {
                 <ScrollAnimation delay={300}>
                   <div className="flex items-center gap-2 text-[#495464]/70">
                     <IconBuilding className="w-5 h-5 text-[#495464]" />
-                    <span className="text-sm">Пет пространства</span>
+                    <span className="text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Пет пространства</span>
                   </div>
                 </ScrollAnimation>
                 <ScrollAnimation delay={400}>
                   <div className="flex items-center gap-2 text-[#495464]/70">
                     <IconUsers className="w-5 h-5 text-[#495464]" />
-                    <span className="text-sm">Две поколения</span>
+                    <span className="text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Две поколения</span>
                   </div>
                 </ScrollAnimation>
                 <ScrollAnimation delay={500}>
                   <div className="flex items-center gap-2 text-[#495464]/70">
                     <IconPalette className="w-5 h-5 text-[#495464]" />
-                    <span className="text-sm">Една мисия</span>
+                    <span className="text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Една мисия</span>
                   </div>
                 </ScrollAnimation>
               </div>
               <Link
                 href="/za-nas"
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 Научи повече
                 <svg
@@ -165,16 +166,16 @@ export default async function Home() {
             <div className="max-w-4xl">
               <div className="flex items-center gap-3 mb-6">
                 <span className="w-12 h-0.5 bg-[#495464]"></span>
-                <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+                <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                   Настояща изложба
                 </span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-2">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-2" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 {currentExhibition.title}
               </h2>
               {currentExhibition.subtitle && (
                 <ScrollAnimation>
-                  <p className="text-base md:text-lg text-[#495464]/60 mb-6 font-normal">
+                  <p className="text-base md:text-lg text-[#495464]/60 mb-6 font-normal" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     {currentExhibition.subtitle}
                   </p>
                 </ScrollAnimation>
@@ -197,7 +198,7 @@ export default async function Home() {
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
                 {currentExhibition.date && (
                   <ScrollAnimation>
-                    <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2">
+                    <p className="text-lg text-[#495464]/90 leading-relaxed font-medium flex items-center gap-2" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                       <IconCalendar className="w-5 h-5 text-[#495464]" />
                       {currentExhibition.date.includes("Изложбата")
                         ? currentExhibition.date
@@ -210,7 +211,7 @@ export default async function Home() {
               {/* Author */}
               {currentExhibition.author && (
                 <ScrollAnimation>
-                  <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4">
+                  <p className="text-base text-[#495464]/70 mb-8 italic border-l-2 border-[#BBBFCA] pl-4" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     {currentExhibition.author.includes(",") ? "Автори" : "Автор"}:{" "}
                     {currentExhibition.author}
                   </p>
@@ -220,6 +221,7 @@ export default async function Home() {
               <Link
                 href={`/izlozhbi/${currentExhibition.slug}`}
                 className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 Разгледай изложбата
                 <svg
@@ -248,15 +250,15 @@ export default async function Home() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 Събития
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-4" style={{ fontFamily: "var(--font-playfair), serif" }}>
               nOva art space – сцена за Вашите идеи
             </h2>
             <ScrollAnimation>
-              <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-8 font-medium leading-relaxed">
+              <h3 className="text-xl md:text-2xl text-[#495464]/90 mb-8 font-medium leading-relaxed" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 Пространство, създадено да издига всяка идея — с възможностите на
                 галерия и въздействието на премиум локация.
               </h3>
@@ -274,6 +276,7 @@ export default async function Home() {
             <Link
               href="/kontakti#zapitvane"
               className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               Изпрати запитване
               <svg
@@ -301,7 +304,7 @@ export default async function Home() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 Новини
               </span>
             </div>
@@ -310,17 +313,17 @@ export default async function Home() {
             {mainNews && (
               <div className="mb-12 pb-8 border-b-2 border-[#E8E8E8]">
                 <div className="mb-4">
-                  <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+                  <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                     Главна новина
                   </span>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#495464] mb-3" style={{ fontFamily: "var(--font-playfair), serif" }}>
                   {mainNews.title}
                 </h3>
                 {mainNews.subtitle && (
                   <ScrollAnimation>
-                    <p className="text-lg text-[#495464]/70 mb-6">
+                    <p className="text-lg text-[#495464]/70 mb-6" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                       {mainNews.subtitle}
                     </p>
                   </ScrollAnimation>
@@ -343,6 +346,7 @@ export default async function Home() {
             <Link
               href="/novini"
               className="inline-flex items-center gap-2 bg-[#495464] text-white px-8 py-3 rounded-md font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-lg hover:scale-105 group"
+              style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
             >
               Виж всички новини
               <svg
@@ -370,24 +374,25 @@ export default async function Home() {
           <div className="max-w-4xl">
             <div className="flex items-center gap-3 mb-8">
               <span className="w-12 h-0.5 bg-[#495464]"></span>
-              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+              <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 Контакти
               </span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#495464] mb-8" style={{ fontFamily: "var(--font-playfair), serif" }}>
               Свържете се с нас
             </h2>
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 border border-[#E8E8E8] hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-3">
                   <IconLocation className="w-6 h-6 text-[#495464]" />
-                  <h3 className="font-semibold text-[#495464]">Адрес</h3>
+                  <h3 className="font-semibold text-[#495464]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Адрес</h3>
                 </div>
                 <a
                   href="https://maps.google.com/?q=ул.+Съборна+№+3,+София"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[#495464]/80 hover:text-[#495464] transition-colors duration-300 block"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
                   гр. София, ул. Съборна № 3, ниво -1
                 </a>
@@ -395,11 +400,12 @@ export default async function Home() {
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 border border-[#E8E8E8] hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-3">
                   <IconPhone className="w-6 h-6 text-[#495464]" />
-                  <h3 className="font-semibold text-[#495464]">Телефон</h3>
+                  <h3 className="font-semibold text-[#495464]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Телефон</h3>
                 </div>
                 <a
                   href="tel:0888426610"
                   className="text-[#495464]/80 hover:text-[#495464] transition-colors duration-300 block"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
                   0888 426 610
                 </a>
@@ -407,11 +413,12 @@ export default async function Home() {
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 border border-[#E8E8E8] hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-3">
                   <IconMail className="w-6 h-6 text-[#495464]" />
-                  <h3 className="font-semibold text-[#495464]">Имейл</h3>
+                  <h3 className="font-semibold text-[#495464]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>Имейл</h3>
                 </div>
                 <a
                   href="mailto:novaartspace@gmail.com"
                   className="text-[#495464]/80 hover:text-[#495464] transition-colors duration-300 block"
+                  style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                 >
                   novaartspace@gmail.com
                 </a>
@@ -419,7 +426,7 @@ export default async function Home() {
               <div className="bg-[#E8E8E8]/50 rounded-lg p-6 border border-[#E8E8E8] hover:shadow-md transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-3">
                   <IconGlobe className="w-6 h-6 text-[#495464]" />
-                  <h3 className="font-semibold text-[#495464]">
+                  <h3 className="font-semibold text-[#495464]" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                     Социални мрежи
                   </h3>
                 </div>
@@ -429,6 +436,7 @@ export default async function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#495464]/80 hover:text-[#495464] transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     Instagram
                   </a>
@@ -437,6 +445,7 @@ export default async function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#495464]/80 hover:text-[#495464] transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     Facebook
                   </a>
@@ -452,23 +461,24 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">
+              <h3 className="font-bold text-lg mb-4 text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 nOva art space
               </h3>
-              <p className="text-white/80 text-sm leading-relaxed">
+              <p className="text-white/80 text-sm leading-relaxed" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 Съвременна галерия и премиум пространство за събития в сърцето
                 на София.
               </p>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">
+              <h3 className="font-bold text-lg mb-4 text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 Бързи връзки
               </h3>
-              <ul className="space-y-2 text-sm text-white/80">
+              <ul className="space-y-2 text-sm text-white/80" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 <li>
                   <Link
                     href="/izlozhbi"
                     className="hover:text-white transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     Изложби
                   </Link>
@@ -477,6 +487,7 @@ export default async function Home() {
                   <Link
                     href="/subitiya"
                     className="hover:text-white transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     Събития
                   </Link>
@@ -485,6 +496,7 @@ export default async function Home() {
                   <Link
                     href="/novini"
                     className="hover:text-white transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     Новини
                   </Link>
@@ -493,6 +505,7 @@ export default async function Home() {
                   <Link
                     href="/za-nas"
                     className="hover:text-white transition-colors duration-300"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     За нас
                   </Link>
@@ -500,12 +513,13 @@ export default async function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">Свържете се</h3>
-              <ul className="space-y-2 text-sm text-white/80">
+              <h3 className="font-bold text-lg mb-4 text-white" style={{ fontFamily: "var(--font-playfair), serif" }}>Свържете се</h3>
+              <ul className="space-y-2 text-sm text-white/80" style={{ fontFamily: "var(--font-playfair), serif" }}>
                 <li>
                   <a
                     href="tel:0888426610"
                     className="hover:text-white transition-colors duration-300 flex items-center gap-2"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     <IconPhone className="w-4 h-4 text-white/80" /> 0888 426 610
                   </a>
@@ -514,6 +528,7 @@ export default async function Home() {
                   <a
                     href="mailto:novaartspace@gmail.com"
                     className="hover:text-white transition-colors duration-300 flex items-center gap-2"
+                    style={{ fontFamily: "var(--font-playfair), serif" }}
                   >
                     <IconMail className="w-4 h-4 text-white/80" />{" "}
                     novaartspace@gmail.com
@@ -543,7 +558,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center">
-            <p className="text-white/80 text-sm">
+            <p className="text-white/80 text-sm" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
               © {new Date().getFullYear()} nOva art space. Всички права
               запазени.
             </p>

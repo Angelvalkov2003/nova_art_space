@@ -33,6 +33,7 @@ export default async function NewsDetail({ params }: PageProps) {
         <Link
           href="/novini"
           className="inline-flex items-center gap-2 mb-8 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 group"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
@@ -52,7 +53,7 @@ export default async function NewsDetail({ params }: PageProps) {
 
         <div className="flex items-center gap-3 mb-8">
           <span className="w-12 h-0.5 bg-[#495464]"></span>
-          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider">
+          <span className="text-sm font-semibold text-[#495464] uppercase tracking-wider" style={{ fontFamily: "var(--font-playfair), serif" }}>
             Новина
           </span>
         </div>
@@ -60,20 +61,20 @@ export default async function NewsDetail({ params }: PageProps) {
         {/* Main news badge */}
         {newsItem.position === 0 && (
           <div className="mb-6">
-            <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md">
+            <span className="inline-flex items-center gap-2 bg-[#495464] text-white px-5 py-2 rounded-full text-sm font-medium shadow-md" style={{ fontFamily: "var(--font-playfair), serif" }}>
               <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
               Главна новина
             </span>
           </div>
         )}
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-2">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#495464] mb-2" style={{ fontFamily: "var(--font-playfair), serif" }}>
           {newsItem.title}
         </h1>
 
         {newsItem.subtitle && (
           <ScrollAnimation>
-            <h2 className="text-2xl md:text-3xl text-[#495464]/90 mb-8 font-medium">
+            <h2 className="text-2xl md:text-3xl text-[#495464]/90 mb-8 font-medium" style={{ fontFamily: "var(--font-playfair), serif" }}>
               {newsItem.subtitle}
             </h2>
           </ScrollAnimation>
@@ -96,7 +97,7 @@ export default async function NewsDetail({ params }: PageProps) {
               (paragraph, idx) =>
                 paragraph.trim() && (
                   <ScrollAnimation key={idx} delay={idx * 100}>
-                    <p className="text-lg text-[#495464]/80 leading-relaxed">
+                    <p className="text-lg text-[#495464]/80 leading-relaxed" style={{ fontFamily: "var(--font-playfair), serif" }}>
                       {paragraph.trim()}
                     </p>
                   </ScrollAnimation>
@@ -121,7 +122,7 @@ export default async function NewsDetail({ params }: PageProps) {
 
       <footer className="bg-gradient-to-b from-[#495464] to-[#3a4149] text-white py-12 mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-white/80 text-sm">
+          <p className="text-white/80 text-sm" style={{ fontFamily: "var(--font-playfair), serif" }}>
             © {new Date().getFullYear()} nOva art space. Всички права запазени.
           </p>
         </div>

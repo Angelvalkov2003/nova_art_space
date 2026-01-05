@@ -56,6 +56,7 @@ export default function Navigation() {
                   key={item.href}
                   href={item.href}
                   className="relative text-[#495464] hover:text-[#495464] font-medium transition-all duration-300 px-4 py-2 rounded-lg group"
+                  style={{ fontFamily: "var(--font-playfair), serif" }}
                 >
                   <span className="relative z-10">{item.label}</span>
                   <span className="absolute inset-0 bg-[#E8E8E8] rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"></span>
@@ -109,7 +110,7 @@ export default function Navigation() {
             <div className="flex flex-col h-full">
               {/* Menu Header */}
               <div className="flex justify-between items-center p-6 border-b border-[#E8E8E8]">
-                <h2 className="text-xl font-semibold text-[#495464]">Меню</h2>
+                <h2 className="text-xl font-semibold text-[#495464]" style={{ fontFamily: "var(--font-playfair), serif" }}>Меню</h2>
                 <button
                   className="text-[#495464] p-2 rounded-lg hover:bg-[#E8E8E8] transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
@@ -137,6 +138,7 @@ export default function Navigation() {
                       key={item.href}
                       href={item.href}
                       className="block text-[#495464] hover:text-[#495464] font-medium transition-all duration-300 px-4 py-3 rounded-lg hover:bg-[#E8E8E8]"
+                      style={{ fontFamily: "var(--font-playfair), serif" }}
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}

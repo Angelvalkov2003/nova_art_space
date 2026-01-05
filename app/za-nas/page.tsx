@@ -121,15 +121,17 @@ export default function ZaNas() {
               Нашата история
             </h2>
           </ScrollAnimation>
-          <ScrollAnimation delay={100}>
-            <div className="bg-[#E8E8E8]/30 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
-              <p className="text-2xl text-[#495464] font-semibold" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
-                Пет пространства. Две поколения. Една непрекъсната линия на
-                развитие.
-              </p>
-            </div>
-          </ScrollAnimation>
-          <div className="space-y-6 text-lg text-[#495464]/80 leading-relaxed">
+
+          {/* Mobile version - alternating text and carousel */}
+          <div className="md:hidden space-y-6 text-lg text-[#495464]/80 leading-relaxed">
+            <ScrollAnimation delay={100}>
+              <div className="bg-[#E8E8E8]/30 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
+                <p className="text-2xl text-[#495464] font-semibold" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  Пет пространства. Две поколения. Една непрекъсната линия на
+                  развитие.
+                </p>
+              </div>
+            </ScrollAnimation>
             <ScrollAnimation delay={200}>
               <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
                 Историята на nOva art space започва през 1997 г., когато Ваня
@@ -155,6 +157,9 @@ export default function ZaNas() {
                   images={georgeWashingtonImages}
                   alt='Арт център "Форум" на ул. "Георг Вашингтон" 24'
                 />
+                <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  Арт център „Форум"
+                </p>
               </div>
             )}
             <ScrollAnimation delay={400}>
@@ -171,6 +176,9 @@ export default function ZaNas() {
                   images={vasilLevskiImages}
                   alt='Галерия "Форум" на бул. "Васил Левски" 93'
                 />
+                <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  галерия „Форум" на бул. „Васил Левски"
+                </p>
               </div>
             )}
             <ScrollAnimation delay={500}>
@@ -187,6 +195,9 @@ export default function ZaNas() {
                   images={novaArtSpaceImages}
                   alt="nOva art space"
                 />
+                <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  nOva art space, ул. Съборна 3
+                </p>
               </div>
             )}
             <ScrollAnimation delay={600}>
@@ -208,6 +219,112 @@ export default function ZaNas() {
                 </p>
               </div>
             </ScrollAnimation>
+          </div>
+
+          {/* Desktop version - grid with text left, carousels right */}
+          <div className="hidden md:grid md:grid-cols-2 gap-8 items-start">
+            {/* Left column - Text content */}
+            <div className="space-y-6 text-lg text-[#495464]/80 leading-relaxed">
+              <ScrollAnimation delay={100}>
+                <div className="bg-[#E8E8E8]/30 rounded-lg p-6 mb-8 border-l-4 border-[#495464]">
+                  <p className="text-2xl text-[#495464] font-semibold" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                    Пет пространства. Две поколения. Една непрекъсната линия на
+                    развитие.
+                  </p>
+                </div>
+              </ScrollAnimation>
+              <ScrollAnimation delay={200}>
+                <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  Историята на nOva art space започва през 1997 г., когато Ваня
+                  Атанасова открива първото пространство – галерия „Жорж Папазов" в
+                  Пловдив. Галерията бързо се превръща в емблематично място в
+                  културния пейзаж на града и поставя основите на дългогодишна
+                  традиция, посветена на изкуството.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={300}>
+                <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  През 2009 г. второто поколение продължава тази мисия. Спартак
+                  Атанасов създава Арт център „Форум" на ул. „Георг Вашингтон" 24,
+                  София – впечатляващо арт пространство в стил сецесион, включващо
+                  осем зали, предназначени за мащабни изложби и културни събития.
+                  Това е първият голям мост между артистичната среда на Пловдив и
+                  столицата.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={400}>
+                <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  Развитието продължава през 2014 г. с трето пространство – галерия
+                  „Форум" на бул. „Васил Левски" 93, София, място, което бързо се
+                  превръща в важен ориентир за колекционери, ценители и съвременни
+                  автори.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={500}>
+                <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  През 2019 г. се появява четвъртото пространство – nOva art space,
+                  тогава вече с нова концепция: хипермодерна сцена за изложби,
+                  концерти, театрални форми, премиери и разнообразни културни
+                  формати, отговарящи на динамиката на съвременната публика.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={600}>
+                <p style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                  През 2025 г. галерията достига своя най-мащабен етап –
+                  преместването и разширяването на ул. „Съборна" № 3, превръщайки се
+                  в петото пространство от този дълъг и последователен път. Това е
+                  най-голямото и технологично напреднало средище досега – създадено
+                  да разказва истории чрез изкуство и да бъде дом на вдъхновяващи
+                  културни преживявания.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation delay={700}>
+                <div className="bg-white/60 backdrop-blur-sm rounded-lg p-6 border border-[#E8E8E8] mt-6">
+                  <p className="font-semibold text-[#495464] text-lg" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                    Две поколения, пет пространства и една непроменена мисия:
+                    уважение към изкуството, професионално кураторство и желание да
+                    се развива българската арт сцена.
+                  </p>
+                </div>
+              </ScrollAnimation>
+            </div>
+
+            {/* Right column - Image carousels */}
+            <div className="space-y-6 sticky top-8">
+              {georgeWashingtonImages.length > 0 && (
+                <div>
+                  <ImageCarousel
+                    images={georgeWashingtonImages}
+                    alt='Арт център "Форум" на ул. "Георг Вашингтон" 24'
+                  />
+                  <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                    Арт център „Форум"
+                  </p>
+                </div>
+              )}
+              {vasilLevskiImages.length > 0 && (
+                <div>
+                  <ImageCarousel
+                    images={vasilLevskiImages}
+                    alt='Галерия "Форум" на бул. "Васил Левски" 93'
+                  />
+                  <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                    галерия „Форум" на бул. „Васил Левски"
+                  </p>
+                </div>
+              )}
+              {novaArtSpaceImages.length > 0 && (
+                <div>
+                  <ImageCarousel
+                    images={novaArtSpaceImages}
+                    alt="nOva art space"
+                  />
+                  <p className="text-sm text-[#495464]/80 italic mt-2 text-center" style={{ fontFamily: "var(--font-montserrat), sans-serif" }}>
+                    nOva art space, ул. Съборна 3
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

@@ -33,11 +33,11 @@ export default function ZaNas() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 mb-8 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 group"
-          style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+          className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group mb-8"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
+            className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -437,7 +437,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                      className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -453,7 +453,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                      className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -470,7 +470,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                      className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -486,7 +486,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                      className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -570,7 +570,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
+                      className="box-text text-sm text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -586,7 +586,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
+                      className="box-text text-sm text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -602,7 +602,7 @@ export default function ZaNas() {
                   <div className="relative z-10">
                     <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                     <p
-                      className="text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
+                      className="box-text text-sm text-[#495464]/80 group-hover:text-[#495464] transition-colors leading-relaxed font-medium"
                       style={{
                         fontFamily: "var(--font-montserrat), sans-serif",
                       }}
@@ -676,7 +676,7 @@ export default function ZaNas() {
                 <div className="relative z-10">
                   <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                   <p
-                    className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                    className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                     style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     автори, търсещи професионална платформа за своите идеи;
@@ -688,7 +688,7 @@ export default function ZaNas() {
                 <div className="relative z-10">
                   <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                   <p
-                    className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                    className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                     style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     колекционери, които разчитат на професионална експертиза и
@@ -701,7 +701,7 @@ export default function ZaNas() {
                 <div className="relative z-10">
                   <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                   <p
-                    className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                    className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                     style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     публика, която търси вдъхновение, диалог и нови открития;
@@ -713,7 +713,7 @@ export default function ZaNas() {
                 <div className="relative z-10">
                   <div className="w-16 h-1.5 bg-gradient-to-r from-[#495464] to-[#495464]/60 mb-5 group-hover:w-24 transition-all duration-300 rounded-full"></div>
                   <p
-                    className="text-lg text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
+                    className="box-text text-sm text-[#495464]/80 leading-relaxed group-hover:text-[#495464] transition-colors font-medium"
                     style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
                   >
                     бизнес клиенти, за които културната среда е знак за престиж

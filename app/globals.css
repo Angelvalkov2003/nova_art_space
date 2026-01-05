@@ -113,7 +113,13 @@ button,
   letter-spacing: 0.01em !important;
 }
 
-/* Small text */
+/* Small text in cards/boxes - override general p styles with higher specificity */
+p.box-text,
+p.card-text {
+  font-size: 0.9375rem !important; /* 15px - slightly larger text for cards */
+  line-height: 1.5 !important;
+}
+
 /* Button alignment change */
 a.btn {
   align-items: flex-end;

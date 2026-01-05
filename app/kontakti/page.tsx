@@ -66,11 +66,11 @@ export default function Kontakti() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 mb-8 text-[#495464] hover:text-[#495464] font-medium transition-colors duration-300 group"
+          className="inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group mb-8"
           style={{ fontFamily: "var(--font-playfair), serif" }}
         >
           <svg
-            className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1"
+            className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

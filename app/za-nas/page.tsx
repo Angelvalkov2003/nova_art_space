@@ -105,7 +105,7 @@ export default function ZaNas() {
             </div>
 
             {/* Right side - Image */}
-            <div className="rounded-lg overflow-hidden md:max-w-sm md:ml-8">
+            <div className="rounded-lg overflow-hidden w-full md:max-w-[250px] lg:max-w-[300px] xl:max-w-[320px] md:ml-18">
               <Image
                 src="/vhod.webp"
                 alt="nOva art space вход"

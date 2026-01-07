@@ -153,7 +153,7 @@ export default function Subitiya() {
     <div className="min-h-screen bg-white" style={{ scrollBehavior: "smooth" }}>
       <Navigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-16 relative">
         <Link
           href="/"
           className="back-button-animate inline-flex items-center gap-1.5 bg-[#495464] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-[#495464]/90 transition-all duration-300 hover:shadow-md hover:scale-105 group mb-8"
@@ -185,21 +185,21 @@ export default function Subitiya() {
           </span>
         </div>
         <ScrollAnimation>
-          <h1
-            className="text-4xl md:text-5xl font-bold text-[#495464] mb-6"
+          <h2
+            className="text-2xl md:text-3xl font-bold text-[#495464] mb-3"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             nOva art space – сцена за Вашите идеи
-          </h1>
+          </h2>
         </ScrollAnimation>
         <ScrollAnimation delay={100}>
-          <h2
-            className="text-2xl md:text-3xl text-[#495464]/70 mb-12 font-medium leading-relaxed"
+          <p
+            className="text-lg md:text-xl text-[#495464]/70 mb-6 font-medium leading-relaxed"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
             Пространство, което превръща всяко събитие в преживяване с
             въздействието на изкуството и силата на премиум локация.
-          </h2>
+          </p>
         </ScrollAnimation>
 
         {/* Gallery Overview */}

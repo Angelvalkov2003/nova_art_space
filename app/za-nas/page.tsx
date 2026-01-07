@@ -64,7 +64,7 @@ export default function ZaNas() {
 
         {/* Основен текст */}
         <div className="mb-20 bg-gradient-to-br from-[#E8E8E8]/30 to-transparent rounded-lg p-8 md:p-12 border border-[#E8E8E8]">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Left side - Text content */}
             <div>
               <h2
@@ -105,7 +105,7 @@ export default function ZaNas() {
             </div>
 
             {/* Right side - Image */}
-            <div className="rounded-lg overflow-hidden md:max-w-sm">
+            <div className="rounded-lg overflow-hidden md:max-w-sm md:ml-8">
               <Image
                 src="/vhod.webp"
                 alt="nOva art space вход"

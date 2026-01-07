@@ -190,7 +190,7 @@ export default async function Home() {
             </div>
 
             {/* Right side - Video */}
-            <div className="rounded-lg overflow-hidden md:p-8 md:max-w-md">
+            <div className="rounded-lg overflow-hidden md:p-8 md:max-w-sm md:ml-12">
               <AutoPlayVideo
                 src="/video.mp4"
                 className="w-full h-auto object-cover"

@@ -14,9 +14,15 @@ export async function getSupabaseServerClient() {
         },
         setAll(cookiesToSet) {
           try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            );
+            cookiesToSet.forEach(({ name, value, options }) => {
+              cookieStore.set(name, value, {
+                ...options,
+                // Ensure cookies work properly across requests
+                sameSite: 'lax' as const,
+                secure: process.env.NODE_ENV === 'production',
+                httpOnly: options?.httpOnly ?? true,
+              });
+            });
           } catch {
             // The `setAll` method was called from a Server Component.
             // Cookies are managed by Supabase client automatically.

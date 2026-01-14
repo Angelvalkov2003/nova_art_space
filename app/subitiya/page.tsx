@@ -847,7 +847,7 @@ export default function Subitiya() {
               <div
                 onClick={() => openLightbox(productImages, 2)}
                 className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 bg-[#E8E8E8]/30 cursor-pointer relative"
-                style={{ height: "652px" }}
+                style={{ height: "666px" }}
               >
                 <Image
                   src="/product8.jpg"

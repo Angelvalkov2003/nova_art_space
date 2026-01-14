@@ -127,19 +127,6 @@ export default async function Home() {
                 </ScrollAnimation>
               </div>
               <div className="flex flex-wrap gap-4 mb-8">
-                <ScrollAnimation delay={300}>
-                  <div className="flex items-center gap-2 text-[#495464]/70">
-                    <IconBuilding className="w-4 h-4 text-[#495464]" />
-                    <span
-                      className="feature-badge-text"
-                      style={{
-                        fontFamily: "var(--font-montserrat), sans-serif",
-                      }}
-                    >
-                      Пет пространства
-                    </span>
-                  </div>
-                </ScrollAnimation>
                 <ScrollAnimation delay={400}>
                   <div className="flex items-center gap-2 text-[#495464]/70">
                     <IconUsers className="w-4 h-4 text-[#495464]" />

@@ -91,13 +91,13 @@ export default async function Izlozhbi() {
               )}
 
               {/* Author and Date */}
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md mb-4">
+              <div className="flex flex-col gap-2 text-[#495464]/70 max-w-md mb-4">
                 {currentExhibition.author && (
                   <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>Автор: {currentExhibition.author}</p>
                 )}
                 {currentExhibition.date && (
                   <div className="flex items-center gap-2">
-                    <IconCalendar className="w-5 h-5 text-[#495464]" />
+                    <IconCalendar className="text-[#495464] !w-3 !h-3" />
                     <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>{currentExhibition.date}</p>
                   </div>
                 )}
@@ -176,13 +176,13 @@ export default async function Izlozhbi() {
                   )}
 
                   {/* Author and Date */}
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-[#495464]/70 max-w-md mb-4">
+                  <div className="flex flex-col gap-2 text-[#495464]/70 max-w-md mb-4">
                     {exhibition.author && (
                       <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>Автор: {exhibition.author}</p>
                     )}
                     {exhibition.date && (
                       <div className="flex items-center gap-2">
-                        <IconCalendar className="w-5 h-5 text-[#495464]" />
+                        <IconCalendar className="text-[#495464] !w-3 !h-3" />
                         <p className="text-base" style={{ fontFamily: "var(--font-playfair), serif" }}>{exhibition.date}</p>
                       </div>
                     )}

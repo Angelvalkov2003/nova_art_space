@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Dancing_Script, Montserrat, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import GoogleAnalytics from "./components/GoogleAnalytics";
-import CookieYes from "./components/CookieYes";
+import CookieBanner from "./components/CookieBanner";
 import { siteConfig } from "./lib/site-config";
 import "./globals.css";
 
@@ -171,10 +171,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        {/* Google Analytics - loads only if NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
+        {/* Google Analytics - loads only if user has consented and NEXT_PUBLIC_GA_MEASUREMENT_ID is set */}
         <GoogleAnalytics />
-        {/* CookieYes - loads only if NEXT_PUBLIC_COOKIEYES_ID is set */}
-        <CookieYes />
+        {/* GDPR-compliant Cookie Consent Banner */}
+        <CookieBanner />
         {children}
       </body>
     </html>

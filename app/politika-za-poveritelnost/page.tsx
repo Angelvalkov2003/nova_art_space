@@ -1,5 +1,6 @@
 import Navigation from "../components/Navigation";
 import Link from "next/link";
+import { siteConfig } from "../lib/site-config";
 
 export const metadata = {
   title: "Политика за Поверителност - nOva art space",
@@ -93,10 +94,11 @@ export default function PolitikaZaPoveritelnost() {
                 className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                <li><strong>Контактна информация:</strong> Имейл адрес, телефонен номер, име</li>
+                <li><strong>Контактна информация:</strong> Имейл адрес, телефонен номер, име (когато използвате контактната форма)</li>
                 <li><strong>Информация за комуникация:</strong> Съобщения, които изпращате чрез нашата контактна форма</li>
-                <li><strong>Техническа информация:</strong> IP адрес, тип браузър, операционна система, страници, които посещавате</li>
-                <li><strong>Бисквитки:</strong> Използваме бисквитки за подобряване на функционалността на уебсайта</li>
+                <li><strong>Техническа информация:</strong> IP адрес (анонимизиран), тип браузър, операционна система, страници, които посещавате</li>
+                <li><strong>Информация за съгласие:</strong> Вашето решение относно бисквитките се записва в cookie файл за период от 365 дни</li>
+                <li><strong>Аналитични данни:</strong> Анонимна статистика за използването на уебсайта (само ако дадете съгласие за аналитични бисквитки)</li>
               </ul>
             </section>
 
@@ -105,23 +107,22 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                3. Как използваме вашите данни
+                3. Как използваме вашите данни и правна основа
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                Използваме събраната информация за следните цели:
+                Използваме събраната информация за следните цели и на съответната правна основа:
               </p>
               <ul
                 className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                <li>Отговор на вашите запитвания и комуникация с вас</li>
-                <li>Подобряване на функционалността и потребителското изживяване на уебсайта</li>
-                <li>Анализ на използването на уебсайта за статистически цели</li>
-                <li>Спазване на правни задължения</li>
-                <li>Защита на правата и сигурността на нашите потребители</li>
+                <li><strong>Отговор на вашите запитвания:</strong> Обработваме вашите контактни данни и съобщения за да отговорим на вашите запитвания. <em>Правна основа: изпълнение на договор или стъпки преди сключване на договор (GDPR чл. 6, ал. 1, буква "б")</em></li>
+                <li><strong>Анализ на използването на уебсайта:</strong> Използваме Google Analytics за статистически цели и подобряване на уебсайта. <em>Правна основа: ваше съгласие (GDPR чл. 6, ал. 1, буква "а")</em></li>
+                <li><strong>Спазване на правни задължения:</strong> Съхраняваме данни, когато това е изискано от закон. <em>Правна основа: правно задължение (GDPR чл. 6, ал. 1, буква "в")</em></li>
+                <li><strong>Защита на правата и сигурността:</strong> Обработваме данни за защита на законните интереси. <em>Правна основа: законен интерес (GDPR чл. 6, ал. 1, буква "е")</em></li>
               </ul>
             </section>
 
@@ -130,7 +131,7 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                4. Споделяне на данни
+                4. Споделяне на данни с трети страни
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
@@ -139,13 +140,23 @@ export default function PolitikaZaPoveritelnost() {
                 Не продаваме, не търгуваме и не предаваме вашите лични данни на трети страни, освен в следните случаи:
               </p>
               <ul
-                className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4"
+                className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4 mb-4"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                <li>Когато е необходимо за предоставяне на услуги (например, доставчици на имейл услуги)</li>
-                <li>Когато е изисквано от закон или по заповед на съда</li>
-                <li>За защита на правата, собствеността или сигурността на nOva art space</li>
+                <li><strong>Google Analytics:</strong> Ако дадете съгласие за аналитични бисквитки, данните се споделят с Google LLC (САЩ) за аналитични цели. Google обработва данните в съответствие с техните политики за поверителност и използва стандартни договорни клаузи за защита на данните.</li>
+                <li><strong>Доставчици на имейл услуги:</strong> Използваме Resend за изпращане на имейли от контактната форма. Те обработват само необходимите данни за изпълнение на услугата.</li>
+                <li><strong>Хостинг провайдъри:</strong> Нашият уебсайт е хостиран на Vercel и Supabase, които обработват техническите данни за работата на уебсайта.</li>
+                <li><strong>Правни изисквания:</strong> Когато е изисквано от закон или по заповед на съда</li>
+                <li><strong>Защита на правата:</strong> За защита на правата, собствеността или сигурността на nOva art space</li>
               </ul>
+              <p
+                className="text-base text-[#495464]/70 leading-relaxed italic"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <strong>Важно:</strong> Когато данните се предават на трети страни извън ЕС/ЕИП (като Google в САЩ), 
+                използваме стандартни договорни клаузи, одобрени от Европейската комисия, за да гарантираме адекватна 
+                защита на вашите данни.
+              </p>
             </section>
 
             <section>
@@ -153,7 +164,7 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                5. Защита на данните
+                5. Защита на данните и период на съхранение
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
@@ -162,6 +173,28 @@ export default function PolitikaZaPoveritelnost() {
                 Прилагаме подходящи технически и организационни мерки за защита на вашите лични данни срещу 
                 неоторизиран достъп, загуба, унищожаване или промяна. Въпреки това, никой метод за предаване 
                 в интернет или електронно съхранение не е 100% сигурен.
+              </p>
+              <h3
+                className="text-xl font-semibold text-[#495464] mb-3 mt-6"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                5.1. Период на съхранение на данните
+              </h3>
+              <ul
+                className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <li><strong>Контактни данни от формата:</strong> Съхраняваме до 2 години след последния контакт или до заявка за изтриване</li>
+                <li><strong>Cookie съгласие:</strong> Съхранява се в cookie файл за период от 365 дни</li>
+                <li><strong>Аналитични данни (Google Analytics):</strong> До 14 месеца (съгласно настройките на Google Analytics)</li>
+                <li><strong>Технически логове:</strong> До 90 дни</li>
+              </ul>
+              <p
+                className="text-base text-[#495464]/70 leading-relaxed mt-4 italic"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                След изтичане на периода на съхранение, данните се изтриват автоматично или анонимизират, 
+                освен ако законът не изисква по-дълго съхранение.
               </p>
             </section>
 
@@ -196,12 +229,57 @@ export default function PolitikaZaPoveritelnost() {
               >
                 За упражняване на тези права, моля свържете се с нас на:{" "}
                 <a
-                  href="mailto:novaartspace@gmail.com"
+                  href={`mailto:${siteConfig.email}`}
                   className="text-[#495464] hover:underline font-semibold"
                 >
-                  novaartspace@gmail.com
+                  {siteConfig.email}
                 </a>
               </p>
+              <p
+                className="text-lg text-[#495464]/80 leading-relaxed mt-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                Ще отговорим на вашата заявка в срок от 30 дни. Ако заявката е сложна или имаме много заявки, 
+                можем да удължим срока с още 60 дни, като ви уведомим за това.
+              </p>
+              <h3
+                className="text-xl font-semibold text-[#495464] mb-3 mt-6"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                6.1. Право на жалба до надзорен орган
+              </h3>
+              <p
+                className="text-lg text-[#495464]/80 leading-relaxed mb-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                Ако смятате, че обработката на вашите лични данни нарушава GDPR, имате право да подадете жалба 
+                до надзорния орган в България:
+              </p>
+              <div
+                className="bg-[#E8E8E8]/30 rounded-lg p-4 border border-[#E8E8E8] mt-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <p className="text-base text-[#495464] mb-2">
+                  <strong>Комисия за защита на личните данни</strong>
+                </p>
+                <p className="text-base text-[#495464]/80 mb-2">
+                  ул. "Проф. Цветан Лазаров" № 2, София 1592
+                </p>
+                <p className="text-base text-[#495464]/80 mb-2">
+                  Телефон: 02 91 53 518
+                </p>
+                <p className="text-base text-[#495464]/80">
+                  Уебсайт:{" "}
+                  <a
+                    href="https://www.cpdp.bg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#495464] hover:underline"
+                  >
+                    www.cpdp.bg
+                  </a>
+                </p>
+              </div>
             </section>
 
             <section>
@@ -209,14 +287,96 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                7. Бисквитки (Cookies)
+                7. Бисквитки (Cookies) и Технологии за Проследяване
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
-                Нашият уебсайт използва бисквитки за подобряване на функционалността. Можете да настроите 
-                вашия браузър да отказва бисквитки, но това може да повлияе на функционалността на уебсайта.
+                Нашият уебсайт използва бисквитки и подобни технологии за подобряване на функционалността 
+                и анализиране на използването на уебсайта. Използваме cookie consent банер, който ви позволява 
+                да изберете кои бисквитки да приемете.
+              </p>
+              
+              <h3
+                className="text-xl font-semibold text-[#495464] mb-3 mt-6"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                7.1. Видове бисквитки, които използваме
+              </h3>
+              
+              <div className="space-y-4 mb-4">
+                <div className="bg-[#E8E8E8]/30 rounded-lg p-4 border border-[#E8E8E8]">
+                  <h4
+                    className="text-lg font-semibold text-[#495464] mb-2"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    Аналитични бисквитки (Google Analytics)
+                  </h4>
+                  <p
+                    className="text-base text-[#495464]/80 leading-relaxed mb-2"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    Използваме Google Analytics 4 (GA4) за да анализираме как посетителите използват нашия уебсайт. 
+                    Тези бисквитки събират анонимна статистическа информация като:
+                  </p>
+                  <ul
+                    className="list-disc list-inside space-y-1 text-base text-[#495464]/80 ml-4"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    <li>Брой посетители и страници, които посещават</li>
+                    <li>Времето, прекарано на уебсайта</li>
+                    <li>Как посетителите са достигнали до нашия уебсайт</li>
+                    <li>IP адреси (анонимизирани)</li>
+                    <li>Тип браузър и устройство</li>
+                  </ul>
+                  <p
+                    className="text-base text-[#495464]/80 leading-relaxed mt-2"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    <strong>Правна основа:</strong> Вашето съгласие (GDPR чл. 6, ал. 1, буква "а")<br />
+                    <strong>Период на съхранение:</strong> До 14 месеца<br />
+                    <strong>Трета страна:</strong> Google LLC (САЩ) - обработва данните в съответствие с 
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#495464] hover:underline font-medium"> Google Privacy Policy</a> и 
+                    <a href="https://business.safety.google/adsprocessorterms/" target="_blank" rel="noopener noreferrer" className="text-[#495464] hover:underline font-medium"> Google Analytics Terms</a>
+                  </p>
+                  <p
+                    className="text-sm text-[#495464]/70 leading-relaxed mt-2 italic"
+                    style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+                  >
+                    <strong>Важно:</strong> Google Analytics се зарежда само след като дадете изрично съгласие 
+                    чрез нашия cookie consent банер. Можете да оттеглите съгласието си по всяко време чрез настройките 
+                    на бисквитките или като изтриете cookie файла "cookie_consent" от вашия браузър.
+                  </p>
+                </div>
+              </div>
+
+              <h3
+                className="text-xl font-semibold text-[#495464] mb-3 mt-6"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                7.2. Управление на бисквитките
+              </h3>
+              <p
+                className="text-lg text-[#495464]/80 leading-relaxed mb-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                Можете да управлявате вашите предпочитания за бисквитки по следните начини:
+              </p>
+              <ul
+                className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4 mb-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <li>Чрез нашия cookie consent банер в долната част на страницата</li>
+                <li>Чрез настройките на вашия браузър (настройки → поверителност → бисквитки)</li>
+                <li>Като изтриете съществуващите бисквитки от вашия браузър</li>
+              </ul>
+              <p
+                className="text-base text-[#495464]/70 leading-relaxed italic"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <strong>Забележка:</strong> Отказът от аналитични бисквитки няма да повлияе на основната 
+                функционалност на уебсайта, но няма да можем да анализираме използването му.
               </p>
             </section>
 
@@ -225,7 +385,37 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                8. Промени в политиката
+                8. Трансфер на данни извън Европейския съюз
+              </h2>
+              <p
+                className="text-lg text-[#495464]/80 leading-relaxed mb-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                Някои от нашите доставчици на услуги (като Google Analytics) са базирани извън Европейския съюз. 
+                Когато предаваме вашите данни на такива доставчици, използваме следните защитни механизми:
+              </p>
+              <ul
+                className="list-disc list-inside space-y-2 text-lg text-[#495464]/80 ml-4"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                <li><strong>Стандартни договорни клаузи:</strong> Използваме стандартни договорни клаузи, одобрени от Европейската комисия, които гарантират адекватна защита на вашите данни</li>
+                <li><strong>Адекватност:</strong> Някои страни имат решение за адекватност от Европейската комисия</li>
+                <li><strong>Други гаранции:</strong> Използваме допълнителни технически и организационни мерки за защита</li>
+              </ul>
+              <p
+                className="text-base text-[#495464]/70 leading-relaxed mt-4 italic"
+                style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
+              >
+                Ако искате повече информация за защитните механизми, които използваме, моля свържете се с нас.
+              </p>
+            </section>
+
+            <section>
+              <h2
+                className="text-2xl font-bold text-[#495464] mb-4"
+                style={{ fontFamily: "var(--font-playfair), serif" }}
+              >
+                9. Промени в политиката
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
@@ -233,7 +423,8 @@ export default function PolitikaZaPoveritelnost() {
               >
                 Запазваме си правото да актуализираме тази Политика за Поверителност по всяко време. 
                 Всички промени ще бъдат публикувани на тази страница с актуализирана дата. Препоръчваме 
-                ви да преглеждате тази страница периодично.
+                ви да преглеждате тази страница периодично. При значителни промени ще ви уведомим чрез 
+                уведомление на уебсайта или по имейл (ако имаме вашия имейл адрес).
               </p>
             </section>
 
@@ -242,7 +433,7 @@ export default function PolitikaZaPoveritelnost() {
                 className="text-2xl font-bold text-[#495464] mb-4"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                9. Контакт
+                10. Контакт
               </h2>
               <p
                 className="text-lg text-[#495464]/80 leading-relaxed mb-4"
@@ -256,27 +447,27 @@ export default function PolitikaZaPoveritelnost() {
                 style={{ fontFamily: "var(--font-montserrat), sans-serif" }}
               >
                 <p className="text-lg text-[#495464] mb-2">
-                  <strong>nOva art space</strong>
+                  <strong>{siteConfig.name}</strong>
                 </p>
                 <p className="text-base text-[#495464]/80 mb-2">
-                  гр. София, ул. Съборна № 3, ниво -1
+                  {siteConfig.address.city}, {siteConfig.address.street}
                 </p>
                 <p className="text-base text-[#495464]/80 mb-2">
                   Email:{" "}
                   <a
-                    href="mailto:novaartspace@gmail.com"
+                    href={`mailto:${siteConfig.email}`}
                     className="text-[#495464] hover:underline"
                   >
-                    novaartspace@gmail.com
+                    {siteConfig.email}
                   </a>
                 </p>
                 <p className="text-base text-[#495464]/80">
                   Телефон:{" "}
                   <a
-                    href="tel:0888426610"
+                    href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
                     className="text-[#495464] hover:underline"
                   >
-                    0888 426 610
+                    {siteConfig.phone}
                   </a>
                 </p>
               </div>

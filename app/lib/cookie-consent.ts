@@ -72,8 +72,7 @@ export function hasAnalyticsConsent(): boolean {
 export function hasConsentFor(category: keyof Omit<ConsentPreferences, 'necessary'>): boolean {
   const consent = getConsentCookie();
   if (!consent) return false;
-  // Necessary is always true
-  if (category === 'necessary') return true;
+  // Category type already excludes 'necessary', so we can directly check
   return consent[category] === true;
 }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Dancing_Script, Montserrat, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import GoogleAnalytics from "./components/GoogleAnalytics";
 import CookieBanner from "./components/CookieBanner";
 import { siteConfig } from "./lib/site-config";
@@ -166,6 +167,29 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${dancingScript.variable} ${montserrat.variable} ${playfairDisplay.variable} antialiased`}
       >
+        {/* Google Tag Manager - must be in head, loaded beforeInteractive */}
+        <Script
+          id="google-tag-manager"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-KG73ZWHJ');
+            `,
+          }}
+        />
+        {/* Google Tag Manager (noscript) - immediately after opening body tag */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-KG73ZWHJ"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <Script
           id="structured-data"
           type="application/ld+json"
@@ -175,6 +199,8 @@ export default function RootLayout({
         <GoogleAnalytics />
         {/* GDPR-compliant Cookie Consent Banner */}
         <CookieBanner />
+        {/* Vercel Analytics */}
+        <Analytics />
         {children}
       </body>
     </html>

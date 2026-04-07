@@ -4,10 +4,47 @@ import Link from "next/link";
 import { IconCalendar, IconLocation, IconParty } from "../components/Icons";
 import { getExhibitions, Exhibition } from "../lib/exhibitions";
 import Image from "next/image";
+import type { Metadata } from "next";
+import { absoluteOgImageUrl, siteConfig } from "../lib/site-config";
 
 // Force dynamic rendering to always fetch fresh data
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
+
+const izlozhbiOgImage = absoluteOgImageUrl("/metadatapicks/izlojbi.webp");
+
+export const metadata: Metadata = {
+  title: "Изложби - nOva art space",
+  description:
+    "Разгледайте настоящи и минали изложби в nOva art space.",
+  alternates: {
+    canonical: `${siteConfig.url}/izlozhbi`,
+  },
+  openGraph: {
+    title: "Изложби - nOva art space",
+    description:
+      "Разгледайте настоящи и минали изложби в nOva art space.",
+    url: `${siteConfig.url}/izlozhbi`,
+    siteName: siteConfig.name,
+    locale: "bg_BG",
+    type: "website",
+    images: [
+      {
+        url: izlozhbiOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Изложби в nOva art space",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Изложби - nOva art space",
+    description:
+      "Разгледайте настоящи и минали изложби в nOva art space.",
+    images: [izlozhbiOgImage],
+  },
+};
 
 export default async function Izlozhbi() {
   const exhibitions = await getExhibitions();

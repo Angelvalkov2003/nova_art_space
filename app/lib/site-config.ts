@@ -13,13 +13,7 @@ export const getSiteUrl = (): string => {
     return 'http://localhost:3000';
   }
 
-  // Vercel sets VERCEL_URL (e.g. project.vercel.app) — valid HTTPS for og:image etc.
-  const vercelUrl = process.env.VERCEL_URL?.trim();
-  if (vercelUrl) {
-    return `https://${vercelUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}`;
-  }
-
-  // Public site lives on .bg; .com may not serve /public assets (breaks Facebook og:image).
+  // Public site domain (prevents og:image pointing to protected preview URLs).
   return 'https://www.novaartspace.bg';
 };
 

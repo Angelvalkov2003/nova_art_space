@@ -11,7 +11,7 @@ import { absoluteOgImageUrl, siteConfig } from "../lib/site-config";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
 
-const izlozhbiOgImage = absoluteOgImageUrl("/metadatapicks/izlojbi.webp");
+const izlozhbiOgImage = absoluteOgImageUrl("/metadatapicks/izlojbi.jpg");
 
 export const metadata: Metadata = {
   title: "Изложби - nOva art space",

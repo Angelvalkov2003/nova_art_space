@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { absoluteOgImageUrl, siteConfig } from "../lib/site-config";
 
-const subitiyaOgImage = absoluteOgImageUrl("/metadatapicks/sybitiq.webp");
+const subitiyaOgImage = absoluteOgImageUrl("/metadatapicks/sybitiq.jpg");
 
 export const metadata: Metadata = {
   title: "Събития - nOva art space",
